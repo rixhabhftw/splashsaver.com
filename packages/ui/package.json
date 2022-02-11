@@ -20,6 +20,7 @@
   "dependencies": {
     "framer-motion": "^7.6.12",
     "next": "13.0.0",
+    "react-icons": "^4.7.1",
     "react-tippy": "^1.4.0"
   }
 }
