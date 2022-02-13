@@ -6,9 +6,9 @@ export const TEAM_MEMBERS = [
     role: "Co-Founder & Developer",
     socials: [
       {
-        linkedin: "",
-        twitter: "",
-        github: "",
+        linkedin: "https://www.linkedin.com/in/nicholas-n-5a9187195/",
+        twitter: "https://github.com/alsonick",
+        github: "https://twitter.com/heynickn",
       },
     ],
   },
