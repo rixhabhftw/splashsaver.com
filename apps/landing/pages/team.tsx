@@ -16,8 +16,9 @@ const Team: NextPage = () => {
     <Container>
       <Animate>
         <Seo title="Splashsaver - Team" description="" />
+
         <Header title="Team" />
-        <div className="grid items-center grid-cols-4 sm:grid:-cols-2 my-4 gap-x-5 gap-y-10 px-44">
+        <div className="grid items-center grid-cols-4 sm:grid:-cols-2 my-4 gap-x-5 gap-y-10 ">
           {TEAM_MEMBERS.map((teamMember) => (
             <div key={teamMember.id} className="flex flex-col">
               <Image
@@ -28,7 +29,7 @@ const Team: NextPage = () => {
                 quality={99}
                 alt={teamMember.name}
               />
-              <h1 className="font-bold text-lg mt-4 tracking-tight text-slate-900">
+              <h1 className="font-bold text-lg mt-4 text-slate-900">
                 {teamMember.name}
               </h1>
               <p className="text-gray-400 text-sm max-w-[150px]">

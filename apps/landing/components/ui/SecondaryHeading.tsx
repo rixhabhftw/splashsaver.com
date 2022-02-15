@@ -8,7 +8,7 @@ type Props = {
 export const SecondaryHeading = ({ children, href }: Props) => {
   return (
     <Link href={href} scroll={false}>
-      <h1 className="font-bold text-slate-900 text-3xl tracking-tight">
+      <h1 className="font-extrabold text-slate-900 text-3xl tracking-tight">
         {children}
       </h1>
     </Link>
