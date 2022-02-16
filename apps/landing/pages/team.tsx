@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const Team: NextPage = () => {
   const iconClassNameStyles =
-    "text-2xl hover:scale-110 cursor-pointer duration-300 mt-3 text-gray-700 hover:text-slate-900";
+    "text-xl hover:scale-110 cursor-pointer duration-300 mt-3 text-gray-700 hover:text-slate-900";
 
   return (
     <Container>
@@ -24,6 +24,7 @@ const Team: NextPage = () => {
               <Image
                 className="border border-gray-100 rounded-full"
                 src={teamMember.avatar}
+                draggable={false}
                 width={125}
                 height={125}
                 quality={99}

@@ -19,7 +19,7 @@ export const NavLink = ({ target, children, href }: Props) => {
     <Link
       className={`${
         pathname === children?.toString().toLowerCase()
-          ? `${baseStyles} text-gray-900 font-semibold bg-gray-100`
+          ? `${baseStyles} text-gray-900 font-bold`
           : baseStyles
       }`}
       href={href}
