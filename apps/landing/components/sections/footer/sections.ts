@@ -28,7 +28,7 @@ export const SECTIONS = [
         id: 4,
         title: "Pricing",
         active: true,
-        link: "#pricing",
+        link: "/#pricing",
         external: false,
       },
     ],

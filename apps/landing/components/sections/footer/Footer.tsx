@@ -1,4 +1,5 @@
 import { FaGithub, FaDiscord } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 import { SECTIONS } from "./sections";
 import Link from "next/link";
 
@@ -43,12 +44,15 @@ export const Footer = () => {
                   className={`${
                     link.active
                       ? "text-gray-400 hover:text-slate-900 focus:ring-4 ring-offset-2 ring-slate-300 rounded"
-                      : "text-gray-300 pointer-events-none"
-                  } text-sm duration-300 outline-none`}
+                      : "text-gray-300 pointer-events-none select-none"
+                  } text-sm duration-300 outline-none flex items-center`}
                   href={link.link}
                   target={link.external ? "_blank" : "_self"}
                 >
-                  {link.title}
+                  {link.title}{" "}
+                  {link.external && link.active ? (
+                    <FiExternalLink className="ml-1 text-base" />
+                  ) : null}
                 </Link>
               ))}
           </div>
