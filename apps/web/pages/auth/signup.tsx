@@ -65,6 +65,7 @@ const Signup = () => {
                 type="email"
                 value={email}
                 placeholder="hello@splashsaver.com"
+                required={true}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{ width: "100%" }}
               />
@@ -80,6 +81,7 @@ const Signup = () => {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   placeholder="********"
+                  required={false}
                   onChange={(e) => setPassword(e.target.value)}
                   style={{ width: "100%", border: "none" }}
                 />
@@ -102,10 +104,10 @@ const Signup = () => {
             <hr className="border border-gray-200 w-full"></hr>
           </div>
           <div className="mb-4 w-full">
-            <GitHubOAuthButton style={{ width: "100%" }} />
+            <GitHubOAuthButton type="button" style={{ width: "100%" }} />
           </div>
           <div className="w-full">
-            <GoogleOAuthButton style={{ width: "100%" }} />
+            <GoogleOAuthButton type="button" style={{ width: "100%" }} />
           </div>
           <p className="text-sm ml-auto text-red-500 mt-2">
             {error ? error : null}

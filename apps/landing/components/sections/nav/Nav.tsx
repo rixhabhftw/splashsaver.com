@@ -29,7 +29,7 @@ export const Nav = () => {
         <NavLink href="/" target="_blank">
           Sign In
         </NavLink>
-        <Link href={WEB_PAGE} className="ml-6" target="_blank">
+        <Link href={`${WEB_PAGE}/auth/signup`} className="ml-6" target="_blank">
           <Button>Create Account</Button>
         </Link>
       </div>
