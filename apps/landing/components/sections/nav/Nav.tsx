@@ -26,7 +26,7 @@ export const Nav = () => {
         ))}
       </div>
       <div className="flex items-center justify-center">
-        <NavLink href="/" target="_blank">
+        <NavLink href={`${WEB_PAGE}/auth/login`} target="_blank">
           Sign In
         </NavLink>
         <Link href={`${WEB_PAGE}/auth/signup`} className="ml-6" target="_blank">
