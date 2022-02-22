@@ -6,9 +6,12 @@ import {
   Label,
   Input,
   Form,
+  Seo,
 } from "@splashsaver/ui";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import React, { useState } from "react";
+
+// Next.js
 import Link from "next/link";
 
 const Login = () => {
@@ -22,6 +25,8 @@ const Login = () => {
     e.preventDefault();
 
     setError("");
+
+    alert("We're not quite ready yet!");
   };
 
   const toggleShowPassword = () => {
@@ -32,13 +37,14 @@ const Login = () => {
 
   return (
     <div className="flex min-h-screen">
+      <Seo title="Splashsaver - Sign in" description="" />
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
           <div className="mb-4 w-full">
             <Heading>Sign in to your account</Heading>
             <Link
               href="/auth/signup"
-              className="text-gray-500 hover:underline text-sm"
+              className="text-gray-500 hover:underline text-sm duration-300 outline-none focus:ring-4 ring-offset-2 ring-slate-300 rounded"
             >
               Don&apos;t have an account?
             </Link>
@@ -93,10 +99,22 @@ const Login = () => {
             <hr className="border border-gray-200 w-full"></hr>
           </div>
           <div className="mb-4 w-full">
-            <GoogleOAuthButton type="button" style={{ width: "100%" }} />
+            <GoogleOAuthButton
+              type="button"
+              style={{ width: "100%" }}
+              onClick={() => {
+                alert("We're not quite ready yet!");
+              }}
+            />
           </div>
           <div className="w-full">
-            <GitHubOAuthButton type="button" style={{ width: "100%" }} />
+            <GitHubOAuthButton
+              type="button"
+              style={{ width: "100%" }}
+              onClick={() => {
+                alert("We're not quite ready yet!");
+              }}
+            />
           </div>
           <p className="text-[12px] ml-auto text-red-500 mt-2">
             {error ? error : null}

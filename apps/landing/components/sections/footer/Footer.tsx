@@ -16,13 +16,17 @@ export const Footer = () => {
           </p>
           <div className="flex items-center mt-4">
             <Link
-              className={iconClassNameStyles}
+              className={`${iconClassNameStyles} outline-none focus:ring-4 ring-offset-2 ring-slate-300 rounded`}
               href="https://github.com/splashsaver/splashsaver.com"
               target="_blank"
             >
               <FaGithub />
             </Link>{" "}
-            <Link className={iconClassNameStyles} href="" target="_blank">
+            <Link
+              className={`${iconClassNameStyles} outline-none focus:ring-4 ring-offset-2 ring-slate-300 rounded`}
+              href=""
+              target="_blank"
+            >
               <FaDiscord className="text-2xl" />
             </Link>
           </div>
@@ -38,9 +42,9 @@ export const Footer = () => {
                   key={link.id}
                   className={`${
                     link.active
-                      ? "text-gray-400 hover:text-slate-900"
+                      ? "text-gray-400 hover:text-slate-900 focus:ring-4 ring-offset-2 ring-slate-300 rounded"
                       : "text-gray-300 pointer-events-none"
-                  } text-sm duration-300`}
+                  } text-sm duration-300 outline-none`}
                   href={link.link}
                   target={link.external ? "_blank" : "_self"}
                 >

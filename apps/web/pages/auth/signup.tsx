@@ -6,10 +6,13 @@ import {
   Label,
   Input,
   Form,
+  Seo,
 } from "@splashsaver/ui";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { LANDING_PAGE } from "@splashsaver/lib";
 import React, { useState } from "react";
+
+// Next.js
 import Link from "next/link";
 
 const Signup = () => {
@@ -31,6 +34,7 @@ const Signup = () => {
 
     // TODO: Handle the API call to create a new user account.
     // ...
+    alert("We're not quite ready yet!");
   };
 
   const toggleShowPassword = () => {
@@ -41,13 +45,14 @@ const Signup = () => {
 
   return (
     <div className="flex min-h-screen">
+      <Seo title="Splashsaver - Signup" description="" />
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
           <div className="mb-4 w-full">
             <Heading>Create your account</Heading>
             <Link
               href="/auth/login"
-              className="text-gray-500 hover:underline text-sm"
+              className="text-gray-500 hover:underline text-sm duration-300 outline-none focus:ring-4 ring-offset-2 ring-slate-300 rounded"
             >
               Already have an account?
             </Link>
@@ -102,10 +107,22 @@ const Signup = () => {
             <hr className="border border-gray-200 w-full"></hr>
           </div>
           <div className="mb-4 w-full">
-            <GitHubOAuthButton type="button" style={{ width: "100%" }} />
+            <GitHubOAuthButton
+              type="button"
+              style={{ width: "100%" }}
+              onClick={() => {
+                alert("We're not quite ready yet!");
+              }}
+            />
           </div>
           <div className="w-full">
-            <GoogleOAuthButton type="button" style={{ width: "100%" }} />
+            <GoogleOAuthButton
+              type="button"
+              style={{ width: "100%" }}
+              onClick={() => {
+                alert("We're not quite ready yet!");
+              }}
+            />
           </div>
           <p className="text-[12px] ml-auto text-red-500 mt-2">
             {error ? error : null}

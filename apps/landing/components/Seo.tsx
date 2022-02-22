@@ -9,7 +9,6 @@ export const Seo = ({ description, title }: Props) => {
   return (
     <Head>
       <title>{title}</title>
-      <link rel="icon" href="/favicon.ico" />
       <meta name="theme-color" />
       <meta name="description" content={description} />
       <meta name="twitter:title" content={title} />

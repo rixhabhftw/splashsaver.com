@@ -12,3 +12,6 @@ export * from "./Heading";
 export * from "./Button";
 export * from "./Input";
 export * from "./Text";
+
+// SEO
+export * from "./seo/Seo";

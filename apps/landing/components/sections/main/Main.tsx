@@ -1,5 +1,9 @@
-import { Button, Text, TooltipWrapped } from "@splashsaver/ui";
+import { Button, Text } from "@splashsaver/ui";
+import { WEB_PAGE } from "@splashsaver/lib";
 import { Heading } from "../../ui/Heading";
+
+// Next.js
+import Link from "next/link";
 
 export const Main = () => {
   return (
@@ -12,18 +16,10 @@ export const Main = () => {
             teams in a more efficient way.
           </Text>
         </div>
-
-        <TooltipWrapped
-          style={{ width: "fit-content" }}
-          title="Still in development, check back later."
-          position={"bottom"}
-          duration={350}
-          theme="light"
-        >
+        <Link href={`${WEB_PAGE}/auth/login`} target="_blank">
           <Button style={{ width: "50%" }}>Get Started</Button>
-        </TooltipWrapped>
+        </Link>
       </div>
-
       <picture>
         <img className="w-[25rem]" src="/assets/Saly-22.png" alt="Saly" />
       </picture>

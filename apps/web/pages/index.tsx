@@ -1,9 +1,15 @@
-import { Button } from "@splashsaver/ui";
+import { useSession } from "next-auth/react";
 
 export default function Web() {
-  return (
-    <div>
-      <h1>Web</h1>
-    </div>
-  );
+  const { data: session } = useSession();
+
+  if (session) {
+    return (
+      <div>
+        <h1>hi there!</h1>
+      </div>
+    );
+  }
+
+  return <div>Loading...</div>;
 }
