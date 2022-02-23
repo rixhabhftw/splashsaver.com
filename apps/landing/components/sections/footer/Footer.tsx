@@ -54,10 +54,6 @@ export const Footer = () => {
           </div>
         ))}
       </div>
-      <p className="text-center text-sm text-gray-400 mt-10">
-        &copy; {new Date().getFullYear()} splashsaver.com.
-        <br /> All rights reserved.
-      </p>
     </footer>
   );
 };

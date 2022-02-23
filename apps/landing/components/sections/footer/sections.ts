@@ -6,7 +6,7 @@ export const SECTIONS = [
       {
         id: 1,
         title: "Team",
-        active: false,
+        active: true,
         link: "/team",
         external: false,
       },
@@ -20,7 +20,7 @@ export const SECTIONS = [
       {
         id: 3,
         title: "Blog",
-        active: false,
+        active: true,
         link: "/blog",
         external: false,
       },
@@ -80,14 +80,14 @@ export const SECTIONS = [
       {
         id: 1,
         title: "Privacy Policy",
-        active: false,
+        active: true,
         link: "/privacy",
         external: false,
       },
       {
         id: 2,
         title: "Terms of Service",
-        active: false,
+        active: true,
         link: "/terms",
         external: false,
       },

@@ -37,7 +37,7 @@ const Login = () => {
 
   return (
     <div className="flex min-h-screen">
-      <Seo title="Splashsaver - Sign in" description="" />
+      <Seo title="Splashsaver / Sign in to your account" description="" />
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
           <div className="mb-4 w-full">

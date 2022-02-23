@@ -45,7 +45,7 @@ const Signup = () => {
 
   return (
     <div className="flex min-h-screen">
-      <Seo title="Splashsaver - Signup" description="" />
+      <Seo title="Splashsaver / Create your account" description="" />
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
           <div className="mb-4 w-full">
