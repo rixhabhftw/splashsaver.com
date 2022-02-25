@@ -1,5 +1,3 @@
-import { Heading } from "../ui/Heading";
-
 type Props = {
   title: string;
 };
@@ -7,7 +5,9 @@ type Props = {
 export const Header = ({ title }: Props) => {
   return (
     <header className="flex flex-col pt-52">
-      <Heading>{title}</Heading>
+      <h2 className="font-bold text-slate-900 text-3xl tracking-tight">
+        {title}
+      </h2>
     </header>
   );
 };
