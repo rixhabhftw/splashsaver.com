@@ -30,8 +30,11 @@ export const Why = () => {
   ];
 
   return (
-    <section className="flex items-center justify-center flex-col mt-36">
-      <SecondaryHeading>Why splashsaver.com?</SecondaryHeading>
+    <section
+      className="flex items-center justify-center flex-col mt-36"
+      id="why"
+    >
+      <SecondaryHeading href="#why">Why splashsaver.com?</SecondaryHeading>
       <div className="max-w-3xl text-center mt-4">
         <Text>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis

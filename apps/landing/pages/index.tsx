@@ -6,6 +6,7 @@ import { Nav } from "../components/sections/nav/Nav";
 
 // Subsections
 import { DeveloperTooling } from "../components/sections/sections/DeveloperTooling";
+import { Pricing } from "../components/sections/sections/Pricing";
 import { Why } from "../components/sections/sections/Why";
 
 export default function Landing() {
@@ -15,6 +16,7 @@ export default function Landing() {
       <Main />
       <Why />
       <DeveloperTooling />
+      <Pricing />
     </Container>
   );
 }

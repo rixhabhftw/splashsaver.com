@@ -4,7 +4,7 @@ export const LINKS = [
   {
     id: 1,
     title: "Pricing",
-    href: "/pricing",
+    href: "#pricing",
     external: false,
   },
   {

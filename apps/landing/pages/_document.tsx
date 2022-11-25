@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
   return (
     <Html>
-      <Head />
+      <Head className="scroll-smooth" />
       <body>
         <Main />
         <NextScript />

@@ -4,9 +4,11 @@ import { Button, Text } from "@splashsaver/ui";
 
 export const DeveloperTooling = () => {
   return (
-    <section className="flex items-center justify-between mt-36">
+    <section className="flex items-center justify-between mt-36" id="developer">
       <div className="flex flex-col h-full justify-center">
-        <SecondaryHeading>Great Developer Tools</SecondaryHeading>
+        <SecondaryHeading href="#developer">
+          Great Developer Tools
+        </SecondaryHeading>
         <div className="max-w-xl my-4">
           <Text>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem
