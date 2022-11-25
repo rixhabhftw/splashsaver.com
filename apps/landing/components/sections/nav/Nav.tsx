@@ -1,29 +1,28 @@
 import { Button } from "@splashsaver/ui";
 import { NavLink } from "./NavLink";
 import { LINKS } from "./links";
-import { Logo } from "./Logo";
 
 // Next.js
 import Link from "next/link";
 
 export const Nav = () => {
   return (
-    <nav className="flex items-center justify-between w-full h-20 top-0">
+    <nav className="relative flex mx-auto items-center justify-between w-full h-20">
       <div className="flex items-center justify-center">
-        <Link className="outline-none" href="/">
-          <Logo />
+        <Link className="outline-none pr-5" href="/">
+          <h1 className="text-2xl font-bold text-slate-900">splashsaver.com</h1>
         </Link>
-        <div className="ml-8">
-          {LINKS.map((link) => (
-            <NavLink
-              key={link.id}
-              href={link.href}
-              target={link.external ? "_blank" : "_self"}
-            >
-              {link.title}
-            </NavLink>
-          ))}
-        </div>
+      </div>
+      <div className="mx-auto">
+        {LINKS.map((link) => (
+          <NavLink
+            key={link.id}
+            href={link.href}
+            target={link.external ? "_blank" : "_self"}
+          >
+            {link.title}
+          </NavLink>
+        ))}
       </div>
       <div className="flex items-center justify-center">
         <NavLink href="/" target="_blank">
