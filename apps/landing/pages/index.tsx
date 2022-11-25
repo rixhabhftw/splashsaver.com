@@ -1,10 +1,14 @@
-import { Button } from "ui";
+import { Container } from "../components/Container";
 
-export default function Docs() {
+// Sections
+import { Main } from "../components/sections/main/Main";
+import { Nav } from "../components/sections/nav/Nav";
+
+export default function Landing() {
   return (
-    <div>
-      <h1>Docs</h1>
-      <Button />
-    </div>
+    <Container>
+      <Nav />
+      <Main />
+    </Container>
   );
 }
