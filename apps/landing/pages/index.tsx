@@ -1,4 +1,5 @@
 import { Container } from "../components/Container";
+import { Footer } from "../components/sections/footer/Footer";
 
 // Sections
 import { Main } from "../components/sections/main/Main";
@@ -17,6 +18,7 @@ export default function Landing() {
       <Why />
       <DeveloperTooling />
       <Pricing />
+      <Footer />
     </Container>
   );
 }

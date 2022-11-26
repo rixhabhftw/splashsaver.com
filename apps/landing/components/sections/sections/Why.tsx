@@ -49,7 +49,7 @@ export const Why = () => {
             key={reason.id}
           >
             {reason.icon}
-            <h1 className="font-bold text-slate-900 text-xl mb-2">
+            <h1 className="font-bold tracking-tight text-slate-900 text-xl mb-2">
               {reason.title}
             </h1>
             <Text style={{ textAlign: "center" }}>{reason.description}</Text>
