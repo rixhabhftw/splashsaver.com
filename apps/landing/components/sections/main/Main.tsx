@@ -1,5 +1,5 @@
+import { Button, Text, TooltipWrapped } from "@splashsaver/ui";
 import { Heading } from "../../ui/Heading";
-import { Button, Text } from "@splashsaver/ui";
 
 export const Main = () => {
   return (
@@ -12,8 +12,18 @@ export const Main = () => {
             teams in a more efficient way.
           </Text>
         </div>
-        <Button style={{ width: "50%" }}>Get Started</Button>
+
+        <TooltipWrapped
+          style={{ width: "fit-content" }}
+          title="Still in development, check back later."
+          position={"bottom"}
+          duration={350}
+          theme="light"
+        >
+          <Button style={{ width: "50%" }}>Get Started</Button>
+        </TooltipWrapped>
       </div>
+
       <picture>
         <img className="w-[25rem]" src="/assets/Saly-22.png" alt="Saly" />
       </picture>

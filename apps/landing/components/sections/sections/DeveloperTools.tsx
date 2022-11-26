@@ -1,6 +1,6 @@
 import { SecondaryHeading } from "../../ui/SecondaryHeading";
+import { Button, Text, TooltipWrapped } from "@splashsaver/ui";
 import { FiExternalLink } from "react-icons/fi";
-import { Button, Text } from "@splashsaver/ui";
 
 export const DeveloperTooling = () => {
   return (
@@ -18,9 +18,16 @@ export const DeveloperTooling = () => {
           </Text>
         </div>
         <div className="w-1/2">
-          <Button style={{ width: "100%" }}>
-            Developer Console <FiExternalLink className="text-xl ml-2" />
-          </Button>
+          <TooltipWrapped
+            title="This product is still in development, check back later."
+            position={"top"}
+            duration={350}
+            theme="light"
+          >
+            <Button style={{ width: "100%" }}>
+              Developer Console <FiExternalLink className="text-xl ml-2" />
+            </Button>
+          </TooltipWrapped>
         </div>
       </div>
       <picture>

@@ -5,7 +5,7 @@ import { Main } from "../components/sections/main/Main";
 import { Nav } from "../components/sections/nav/Nav";
 
 // Subsections
-import { DeveloperTooling } from "../components/sections/sections/DeveloperTooling";
+import { DeveloperTooling } from "../components/sections/sections/DeveloperTools";
 import { Pricing } from "../components/sections/sections/Pricing";
 import { Why } from "../components/sections/sections/Why";
 
