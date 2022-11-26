@@ -1,4 +1,5 @@
 import { Button, TooltipWrapped } from "@splashsaver/ui";
+import { WEB_PAGE } from "@splashsaver/lib";
 import { NavLink } from "./NavLink";
 import { LINKS } from "./links";
 
@@ -28,17 +29,9 @@ export const Nav = () => {
         <NavLink href="/" target="_blank">
           Sign In
         </NavLink>
-        <TooltipWrapped
-          style={{ width: "fit-content" }}
-          title="Still in development, check back later."
-          position={"bottom"}
-          duration={350}
-          theme="light"
-        >
-          <div className="ml-6">
-            <Button>Create Account</Button>
-          </div>
-        </TooltipWrapped>
+        <Link href={WEB_PAGE} className="ml-6" target="_blank">
+          <Button>Create Account</Button>
+        </Link>
       </div>
     </nav>
   );
