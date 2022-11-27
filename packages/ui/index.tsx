@@ -4,6 +4,7 @@ export * from "./oauth/GitHubOAuthButton";
 
 // Form
 export * from "./form/Label";
+export * from "./form/Form";
 
 // UI
 export * from "./Tooltip";

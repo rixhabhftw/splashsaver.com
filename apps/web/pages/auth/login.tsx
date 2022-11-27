@@ -8,11 +8,10 @@ import {
   Form,
 } from "@splashsaver/ui";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { LANDING_PAGE } from "@splashsaver/lib";
 import React, { useState } from "react";
 import Link from "next/link";
 
-const Signup = () => {
+const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
@@ -23,14 +22,6 @@ const Signup = () => {
     e.preventDefault();
 
     setError("");
-
-    if (password.trim().length < 8) {
-      setError("Password must be at least 8 characters.");
-      return;
-    }
-
-    // TODO: Handle the API call to create a new user account.
-    // ...
   };
 
   const toggleShowPassword = () => {
@@ -44,12 +35,12 @@ const Signup = () => {
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
           <div className="mb-4 w-full">
-            <Heading>Create your account</Heading>
+            <Heading>Sign in to your account</Heading>
             <Link
-              href="/auth/login"
+              href="/auth/signup"
               className="text-gray-500 hover:underline text-sm"
             >
-              Already have an account?
+              Don&apos;t have an account?
             </Link>
           </div>
           <div className="w-full mb-4">
@@ -94,7 +85,7 @@ const Signup = () => {
             </div>
           </div>
           <Button type="submit" style={{ width: "100%" }}>
-            Create Account
+            Login
           </Button>
           <div className="flex items-center justify-between w-full my-4">
             <hr className="border border-gray-200 w-full"></hr>
@@ -102,32 +93,13 @@ const Signup = () => {
             <hr className="border border-gray-200 w-full"></hr>
           </div>
           <div className="mb-4 w-full">
-            <GitHubOAuthButton type="button" style={{ width: "100%" }} />
+            <GoogleOAuthButton type="button" style={{ width: "100%" }} />
           </div>
           <div className="w-full">
-            <GoogleOAuthButton type="button" style={{ width: "100%" }} />
+            <GitHubOAuthButton type="button" style={{ width: "100%" }} />
           </div>
           <p className="text-[12px] ml-auto text-red-500 mt-2">
             {error ? error : null}
-          </p>
-          <p className="text-center text-sm mt-4 text-gray-400">
-            By signing up with &quot;Google/GitHub/SAML&quot;, you agree to
-            Splashsaver&apos;s{" "}
-            <Link
-              className="font-bold text-gray-500 hover:underline"
-              href={`${LANDING_PAGE}/terms`}
-              target="_blank"
-            >
-              Terms of Service
-            </Link>{" "}
-            &{" "}
-            <Link
-              className="font-bold text-gray-500 hover:underline"
-              href={`${LANDING_PAGE}/privacy`}
-              target="_blank"
-            >
-              Privacy Policy.
-            </Link>
           </p>
         </Form>
       </div>
@@ -135,4 +107,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
