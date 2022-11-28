@@ -1,6 +1,7 @@
 import { SecondaryHeading } from "../../ui/SecondaryHeading";
 import { Button, Text, TooltipWrapped } from "@splashsaver/ui";
 import { FiExternalLink } from "react-icons/fi";
+import Link from "next/link";
 
 export const DeveloperTooling = () => {
   return (
@@ -11,10 +12,16 @@ export const DeveloperTooling = () => {
         </SecondaryHeading>
         <div className="max-w-xl my-4">
           <Text>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem
-            labore maxime assumenda, illum odit nulla velit praesentium quaerat
-            architecto, reiciendis voluptas mollitia repellendus optio ea
-            consequatur soluta asperiores doloribus.
+            Splashsaver also offers a set of developer tools that allows
+            developers to interact with the the public API and to integrate
+            Splashsaver with already existing tools. Read our{" "}
+            <Link
+              className="font-bold text-gray-500 hover:underline"
+              href="/docs"
+            >
+              docs
+            </Link>{" "}
+            to get started!
           </Text>
         </div>
         <div className="w-1/2">

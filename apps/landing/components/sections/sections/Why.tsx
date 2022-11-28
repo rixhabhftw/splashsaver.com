@@ -37,9 +37,10 @@ export const Why = () => {
       <SecondaryHeading href="#why">Why splashsaver.com?</SecondaryHeading>
       <div className="max-w-3xl text-center mt-4">
         <Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
-          facere at saepe, voluptate rerum impedit. Dolor ipsam magni minima
-          dolores? Lorem ipsum dolor, sit amet consectetur.
+          Startups rely on multiple tools to manage their teams, tasks and
+          meetings, managing all these different aspects can be
+          counterproductive and time-consuming. Splashsaver aims to solve this
+          problem by centralizing all these aspects into a single platform.
         </Text>
       </div>
       <div className="grid gap-8 sm:grid-cols-3 w-full mt-16 items-center justify-between">

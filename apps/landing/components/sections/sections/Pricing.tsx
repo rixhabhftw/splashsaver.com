@@ -25,14 +25,13 @@ export const Pricing = () => {
         {PRICING_MODELS.map((pricingModel) => (
           <div
             key={pricingModel.id}
-            className="flex flex-col mb-10 md:mb-0 w-full h-[35rem] mx-5 p-5 shadow justify-center items-center"
+            className="flex flex-col mb-10 md:mb-0 h-[35rem] w-[48%] p-5 shadow justify-center items-center"
           >
             {/* <h1 className="text-2xl mb-2 font-bold">{pricingModel.title}</h1> */}
             <div className="max-w-sm text-center">
               <Text>
-                We don&apos;t currently have a pricing model since
-                splashsaver.com is still in development, check this page again
-                later.
+                We don&apos;t currently have a pricing model at the moment since
+                we&apos;re still in development, check this page again later.
               </Text>
             </div>
           </div>
