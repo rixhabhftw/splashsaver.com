@@ -1,21 +1,23 @@
 import {
   GoogleOAuthButton,
   GitHubOAuthButton,
+  Loading,
   Heading,
   Button,
   Label,
   Input,
   Form,
   Seo,
+  Or,
 } from "@splashsaver/ui";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import { LANDING_PAGE } from "@splashsaver/lib";
+import { CALLBACK_URL, LANDING_PAGE } from "@splashsaver/lib";
+import { EyeToggle } from "../../components/ui/EyeToggle";
+import { signIn } from "next-auth/react";
 import React, { useState } from "react";
-
-// Next.js
+import { NextPage } from "next";
 import Link from "next/link";
 
-const Signup = () => {
+const Signup: NextPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
@@ -32,16 +34,16 @@ const Signup = () => {
       return;
     }
 
+    // SAML
     // TODO: Handle the API call to create a new user account.
     // ...
+    setLoading(true);
     alert("We're not quite ready yet!");
   };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-
-  const iconClassNameStyles = "text-xl text-gray-500 cursor-pointer";
 
   return (
     <div className="flex min-h-screen">
@@ -89,11 +91,7 @@ const Signup = () => {
                   style={{ width: "100%", border: "none" }}
                 />
                 <div className="mr-4" onClick={toggleShowPassword}>
-                  {showPassword ? (
-                    <FiEye className={iconClassNameStyles} />
-                  ) : (
-                    <FiEyeOff className={iconClassNameStyles} />
-                  )}
+                  <EyeToggle show={showPassword} />
                 </div>
               </div>
             </div>
@@ -101,11 +99,7 @@ const Signup = () => {
           <Button type="submit" style={{ width: "100%" }}>
             Create Account
           </Button>
-          <div className="flex items-center justify-between w-full my-4">
-            <hr className="border border-gray-200 w-full"></hr>
-            <span className="mx-4 text-gray-500">Or</span>
-            <hr className="border border-gray-200 w-full"></hr>
-          </div>
+          <Or />
           <div className="mb-4 w-full">
             <GitHubOAuthButton
               type="button"
@@ -119,16 +113,15 @@ const Signup = () => {
             <GoogleOAuthButton
               type="button"
               style={{ width: "100%" }}
-              onClick={() => {
-                alert("We're not quite ready yet!");
-              }}
+              onClick={() => signIn("google", { callbackUrl: CALLBACK_URL })}
             />
           </div>
           <p className="text-[12px] ml-auto text-red-500 mt-2">
             {error ? error : null}
           </p>
+          <Loading loading={loading} />
           <p className="text-center text-sm mt-4 text-gray-400">
-            By signing up with &quot;Google/GitHub/SAML&quot;, you agree to
+            By signing up with &quot;GitHub/Google/SAML&quot;, you agree to
             Splashsaver&apos;s{" "}
             <Link
               className="font-bold text-gray-500 hover:underline"

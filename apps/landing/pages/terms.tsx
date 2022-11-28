@@ -2,8 +2,9 @@ import { Container } from "../components/layout/Container";
 import { Header } from "../components/layout/Header";
 import { Animate } from "../components/Animate";
 import { Seo } from "../components/Seo";
+import { NextPage } from "next";
 
-const TOS = () => {
+const TOS: NextPage = () => {
   return (
     <Container>
       <Animate>

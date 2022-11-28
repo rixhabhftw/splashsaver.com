@@ -1,3 +1,4 @@
+import { Footer } from "../sections/footer/Footer";
 import { Nav } from "../sections/nav/Nav";
 
 type Props = {
@@ -9,6 +10,7 @@ export const Container = ({ children }: Props) => {
     <div className="flex flex-col mx-auto max-w-7xl px-8 sm:px:3 pb-20">
       <Nav />
       {children}
+      <Footer />
     </div>
   );
 };

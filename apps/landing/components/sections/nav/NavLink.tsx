@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 type Props = {
@@ -7,10 +8,20 @@ type Props = {
 };
 
 export const NavLink = ({ target, children, href }: Props) => {
+  const router = useRouter();
+
+  const pathname = router.pathname.substring(1, router.pathname.length);
+
+  const baseStyles =
+    "text-gray-800  duration-300 hover:text-gray-900 focus:ring-4 ring-slate-300 rounded px-6 py-3 outline-none";
+
   return (
     <Link
-      className="text-gray-800 font-semibold duration-300 hover:text-gray-900 focus:ring-4 ring-slate-300
-      rounded px-4 py-2 outline-none"
+      className={`${
+        pathname === children?.toString().toLowerCase()
+          ? `${baseStyles} font-semibold`
+          : baseStyles
+      }`}
       href={href}
       target={target}
     >

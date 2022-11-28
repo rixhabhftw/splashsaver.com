@@ -5,7 +5,10 @@ import "../styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+const MyApp = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) => {
   return (
     <SessionProvider session={session}>
       <main className={inter.className}>
@@ -13,6 +16,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       </main>
     </SessionProvider>
   );
-}
+};
 
 export default MyApp;

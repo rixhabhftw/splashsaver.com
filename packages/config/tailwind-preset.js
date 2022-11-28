@@ -6,7 +6,11 @@ module.exports = {
     "../../packages/ui/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        fade: "fadeOut 0.8s ease-in-out",
+      },
+    },
   },
   plugins: [],
 };

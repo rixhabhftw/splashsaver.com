@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   const iconClassNameStyles =
-    "text-2xl duration-300 text-gray-700 mr-3 transform hover:scale-110 hover:text-slate-900";
+    "text-2xl duration-300 mr-3 transform hover:scale-110 text-gray-700 hover:text-slate-900";
 
   return (
     <footer className="flex h-full justify-center flex-col mt-36">
