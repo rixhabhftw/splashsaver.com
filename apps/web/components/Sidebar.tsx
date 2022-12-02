@@ -34,7 +34,7 @@ export const Sidebar = () => {
           <DropdownMenu.Trigger asChild>
             <button className="flex items-center outline-none justify-center border rounded-full">
               <Image
-                className="border"
+                className="border rounded-full"
                 src={session.user?.image!}
                 width={30}
                 height={30}
