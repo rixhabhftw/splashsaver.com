@@ -1,73 +1,82 @@
-# Turborepo starter
+<p align="center">
+<p align="center">
+<img width="150" height="150" src="https://github.com/splashsaver/splashsaver.com/blob/main/packages/assets/GradientLogo.png" alt="Logo">
+</p>
+<h1 align="center"><b>Splashsaver</b></h1>
+<p align="center">Making managing your startup team easy.
+<br />
+<a href="https://www.splashsaver.com/" target="_blank"><strong>splashsaver.com »</strong></a>
+</p>
+</p>
 
-This is an official pnpm starter turborepo.
+> Important: Right I'm facing multiple issues with the monorepo being unable to build, development has stopped for now until a fix is found. [Click here to learn more about the issue](https://github.com/vercel/next.js/discussions/43577).
 
-## What's inside?
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
+## Getting started
 
-### Apps and Packages
+> NOTE: Splashsaver is still in active development.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+To run the monorepo locally on your machine, please follow these steps.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Prerequisites
 
-### Utilities
+- [Node.js](https://nodejs.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Yarn](https://yarnpkg.com/)
 
-This turborepo has some additional tools already setup for you:
+## Development
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm run build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
+1. Clone the GitHub repository by clicking the "Code" green button and copy the link ([https://github.com/splashsaver/splashsaver.com.git](https://github.com/splashsaver/splashsaver.com.git)).
 
 ```
-cd my-turborepo
-pnpm run dev
+https://github.com/splashsaver/splashsaver.com.git
 ```
 
-### Remote Caching
+<img width="424" alt="Screenshot 2022-11-30 at 15 07 04" src="https://user-images.githubusercontent.com/101022772/204834012-a4f43f9a-a78a-4a67-9861-a6c88773fcfb.png">
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+> If you plan to make contributions then make sure to fork the repository to your personal account and clone your version instead.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+2. Navigate to the `splashsaver.com` directory.
 
-```
-cd my-turborepo
-pnpm dlx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-pnpm dlx turbo link
+```sh
+cd splashsaver.com
 ```
 
-## Useful Links
+3. Install the missing packages with yarn.
 
-Learn more about the power of Turborepo:
+```
+yarn
+```
 
-- [Pipelines](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+4. Set up your environment variables.
+
+- Create a `.env` file
+- Copy the keys into the `.env` file and fill in the appropriate values.
+
+> Please be sure to DM on [Discord](https://discord.com/) if you're having problems setting up your `.env` file.
+
+> Discord username: Nicholas#0050
+
+5. Run the monorepo.
+
+```
+yarn dev
+```
+
+## Structure:
+
+### Apps:
+
+- `docs`: Our official developers documentation.
+- `landing`: The landing page written in [Next.js](https://nextjs.org/).
+- `web`: The main web page.
+
+### Packages:
+
+- `assets`: Our official developers documentation.
+- `config`: Configurations used throughout the monorepo.
+- `eslint-config-custom`: ESLint configurations used throughout the monorepo.
+- `lib`: Our library package containing helper functions and constants.
+- `tsconfig`: TypeScript configurations used throughout the monorepo.
+- `ui`: Shared component library.
