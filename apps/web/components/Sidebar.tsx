@@ -20,6 +20,10 @@ export const Sidebar = () => {
   if (!session) {
     return <Container>Loading...</Container>;
   }
+
+  const dropdownMenuItemStyles =
+    "text-sm text-gray-400 outline-none font-light p-1 duration-300 hover:bg-gray-100 px-2 rounded cursor-pointer";
+
   return (
     <Container>
       <div className="flex items-center justify-between border-b border-gray-200 pb-4">
@@ -45,9 +49,14 @@ export const Sidebar = () => {
             </button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Portal>
-            <DropdownMenu.Content className="border rounded p-2">
-              <DropdownMenu.Item className="DropdownMenuItem">
+            <DropdownMenu.Content className="border rounded p-2 w-48 bg-white animation-slide">
+              <DropdownMenu.Item className={dropdownMenuItemStyles}>
                 Settings
+              </DropdownMenu.Item>
+              <DropdownMenu.Item
+                className={`${dropdownMenuItemStyles} text-red-500 font-normal`}
+              >
+                Sign out
               </DropdownMenu.Item>
             </DropdownMenu.Content>
           </DropdownMenu.Portal>
