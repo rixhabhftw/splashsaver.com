@@ -1,3 +1,4 @@
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useSession } from "next-auth/react";
 import { FiPlus } from "react-icons/fi";
 import { useEffect } from "react";
@@ -29,15 +30,28 @@ export const Sidebar = () => {
           <FiPlus className="mr-1 text-base" />
           Create team
         </p>
-        <Image
-          className="border rounded-full"
-          src={session.user?.image!}
-          width={30}
-          height={30}
-          quality={99}
-          title="Profile picture"
-          alt="Profile Picture"
-        />
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger asChild>
+            <button className="flex items-center outline-none justify-center border rounded-full">
+              <Image
+                className="border"
+                src={session.user?.image!}
+                width={30}
+                height={30}
+                quality={99}
+                title="Profile picture"
+                alt="Profile Picture "
+              />
+            </button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Portal>
+            <DropdownMenu.Content className="border rounded p-2">
+              <DropdownMenu.Item className="DropdownMenuItem">
+                Settings
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Portal>
+        </DropdownMenu.Root>
       </div>
     </Container>
   );
