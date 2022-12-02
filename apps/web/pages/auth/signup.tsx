@@ -47,7 +47,7 @@ const Signup: NextPage = () => {
 
   return (
     <div className="flex min-h-screen">
-      <Seo title="Splashsaver / Create your account" description="" />
+      <Seo title="Splashsaver / Sign up" description="" />
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
           <div className="mb-4 w-full">
@@ -104,9 +104,7 @@ const Signup: NextPage = () => {
             <GitHubOAuthButton
               type="button"
               style={{ width: "100%" }}
-              onClick={() => {
-                alert("We're not quite ready yet!");
-              }}
+              onClick={() => signIn("github", { callbackUrl: CALLBACK_URL })}
             />
           </div>
           <div className="w-full">

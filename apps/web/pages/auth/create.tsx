@@ -47,7 +47,7 @@ const Create = () => {
 
   return (
     <div className="flex min-h-screen">
-      <Seo title="Splashsaver / Create your account" description="" />
+      <Seo title="Splashsaver / Create" description="" />
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
           <div className="flex items-center justify-between mb-4 w-full">
