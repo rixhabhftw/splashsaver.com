@@ -1,8 +1,9 @@
-const withTM = require("next-transpile-modules")([
-  "@splashsaver/ui",
-  "@splashsaver/lib",
-]);
-
-module.exports = withTM({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-});
+  experimental: {
+    transpilePackages: ["@splashsaver/ui", "@splashsaver/lib"],
+  },
+};
+
+module.exports = nextConfig;

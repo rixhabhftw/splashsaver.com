@@ -1,5 +1,4 @@
 import { Tooltip, TooltipProps } from "react-tippy";
-import "react-tippy/dist/tippy.css";
 import React from "react";
 
 interface TooltipWrappedProps extends React.PropsWithChildren<TooltipProps> {

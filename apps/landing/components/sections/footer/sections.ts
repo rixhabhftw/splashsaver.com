@@ -1,3 +1,5 @@
+import { DOCS_PAGE } from "@splashsaver/lib";
+
 export const SECTIONS = [
   {
     id: 1,
@@ -40,8 +42,8 @@ export const SECTIONS = [
       {
         id: 1,
         title: "Documentation",
-        active: false,
-        link: "",
+        active: true,
+        link: DOCS_PAGE,
         external: true,
       },
       {

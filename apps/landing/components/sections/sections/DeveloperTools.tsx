@@ -1,6 +1,7 @@
 import { SecondaryHeading } from "../../ui/SecondaryHeading";
 import { Button, Text, TooltipWrapped } from "@splashsaver/ui";
 import { FiExternalLink } from "react-icons/fi";
+import { DOCS_PAGE } from "@splashsaver/lib";
 import Link from "next/link";
 
 export const DeveloperTooling = () => {
@@ -17,7 +18,8 @@ export const DeveloperTooling = () => {
             Splashsaver with already existing tools. Read our{" "}
             <Link
               className="font-bold text-gray-500 hover:underline"
-              href="/docs"
+              href={DOCS_PAGE}
+              target="_blank"
             >
               docs
             </Link>{" "}

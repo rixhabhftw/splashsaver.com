@@ -13,7 +13,7 @@
     "@radix-ui/react-dropdown-menu": "^2.0.1",
     "@splashsaver/ui": "*",
     "framer-motion": "^7.6.17",
-    "next": "^12.3.1",
+    "next": "13.0.0",
     "next-auth": "^4.17.0",
     "next-transpile-modules": "^10.0.0",
     "react": "^18.2.0",

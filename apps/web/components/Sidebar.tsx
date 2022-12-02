@@ -1,6 +1,6 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { useSession } from "next-auth/react";
-import { FiPlus } from "react-icons/fi";
+import { useSession, signOut } from "next-auth/react";
+import { FiPlus, FiExternalLink } from "react-icons/fi";
 import { useEffect } from "react";
 import Image from "next/image";
 
@@ -22,7 +22,7 @@ export const Sidebar = () => {
   }
 
   const dropdownMenuItemStyles =
-    "text-sm text-gray-400 outline-none font-light p-1 duration-300 hover:bg-gray-100 px-2 rounded cursor-pointer";
+    "flex items-center justify-between text-sm text-gray-400 outline-none font-light p-2 duration-300 hover:bg-gray-50 rounded cursor-pointer";
 
   return (
     <Container>
@@ -36,7 +36,7 @@ export const Sidebar = () => {
         </p>
         <DropdownMenu.Root>
           <DropdownMenu.Trigger asChild>
-            <button className="flex items-center outline-none justify-center border rounded-full">
+            <button className="flex items-center outline-none justify-center rounded-full">
               <Image
                 className="border rounded-full"
                 src={session.user?.image!}
@@ -49,12 +49,31 @@ export const Sidebar = () => {
             </button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Portal>
-            <DropdownMenu.Content className="border rounded p-2 w-48 bg-white animation-slide">
+            <DropdownMenu.Content
+              className="border rounded p-2 w-48 bg-white transition"
+              sideOffset={10}
+              style={{ marginLeft: "10rem" }}
+            >
+              <DropdownMenu.Item className={dropdownMenuItemStyles}>
+                View profile
+              </DropdownMenu.Item>
               <DropdownMenu.Item className={dropdownMenuItemStyles}>
                 Settings
               </DropdownMenu.Item>
+              <DropdownMenu.Separator className="border-[0.2px] text-gray-100 my-1 w-full" />
+              <DropdownMenu.Label className="text-[12px] pl-2 text-gray-300">
+                Developers
+              </DropdownMenu.Label>
+              <DropdownMenu.Item className={dropdownMenuItemStyles}>
+                Documentation <FiExternalLink className="text-base" />
+              </DropdownMenu.Item>
+              <DropdownMenu.Item className={dropdownMenuItemStyles}>
+                Console <FiExternalLink className="text-base" />
+              </DropdownMenu.Item>
+              <DropdownMenu.Separator className="border-[0.2px] text-gray-100 my-1 w-full" />
               <DropdownMenu.Item
                 className={`${dropdownMenuItemStyles} text-red-500 font-normal`}
+                onClick={() => signOut()}
               >
                 Sign out
               </DropdownMenu.Item>
