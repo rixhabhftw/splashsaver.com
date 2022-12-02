@@ -9,8 +9,6 @@
 </p>
 </p>
 
-> Important: Right I'm facing multiple issues with the monorepo being unable to build, development has stopped for now until a fix is found. [Click here to learn more about the issue](https://github.com/vercel/next.js/discussions/43577).
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Getting started
