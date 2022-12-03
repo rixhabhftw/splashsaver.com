@@ -68,10 +68,13 @@ export const Sidebar = () => {
                 Developers
               </DropdownMenu.Label>
               <DropdownMenu.Item className={dropdownMenuItemStyles}>
+                Developer Console <FiExternalLink className="text-base" />
+              </DropdownMenu.Item>
+              <DropdownMenu.Item className={dropdownMenuItemStyles}>
                 Documentation <FiExternalLink className="text-base" />
               </DropdownMenu.Item>
               <DropdownMenu.Item className={dropdownMenuItemStyles}>
-                Console <FiExternalLink className="text-base" />
+                Report a bug
               </DropdownMenu.Item>
               <DropdownMenu.Separator className="border-[0.2px] text-gray-100 my-1 w-full" />
               <DropdownMenu.Item
