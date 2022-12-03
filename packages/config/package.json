@@ -13,7 +13,5 @@
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.3"
   },
-  "dependencies": {
-    "tailwindcss-radix": "^2.6.1"
-  }
+  "dependencies": {}
 }
