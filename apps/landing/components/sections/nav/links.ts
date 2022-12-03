@@ -1,4 +1,4 @@
-import React from "react";
+import { DOCS_PAGE } from "@splashsaver/lib";
 
 export const LINKS = [
   {
@@ -22,7 +22,7 @@ export const LINKS = [
   {
     id: 4,
     title: "Docs",
-    href: "/docs",
+    href: DOCS_PAGE,
     external: true,
   },
 ];

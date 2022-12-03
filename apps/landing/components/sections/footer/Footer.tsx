@@ -12,8 +12,16 @@ export const Footer = () => {
       <div className="grid grid-cols-2 gap-6 min-h-64 sm:grid-cols-2 lg:grid-cols-6">
         <div className="col-span-2">
           <h2 className="font-bold text-xl text-slate-900">splashsaver.com</h2>
-          <p className="text-sm mt-1 text-gray-400">
-            Making managing your startup team easy.
+          <p className="text-sm mt-1 text-gray-400 max-w-[15rem]">
+            &copy; {new Date().getFullYear()}{" "}
+            <span className="font-bold text-gray-500">splashsaver.com</span>.
+            All rights reserved. Need support?{" "}
+            <Link
+              className="duration-300 font-semibold hover:text-gray-500"
+              href="mailto:hi@notnick.io"
+            >
+              hi@notnick.io
+            </Link>
           </p>
           <div className="flex items-center mt-4">
             <Link
@@ -25,7 +33,7 @@ export const Footer = () => {
             </Link>{" "}
             <Link
               className={`${iconClassNameStyles} outline-none focus:ring-4 ring-offset-2 ring-slate-300 rounded`}
-              href=""
+              href="https://discord.gg/6SwY4Vp9KU"
               target="_blank"
             >
               <FaDiscord className="text-2xl" />
@@ -34,7 +42,7 @@ export const Footer = () => {
         </div>
         {SECTIONS.map((section) => (
           <div key={section.id} className="flex flex-col col-span-1 space-y-2">
-            <h3 className="font-bold tracking-tight text-md">
+            <h3 className="font-bold text-gray-500 uppercase tracking-tight text-sm">
               {section.title}
             </h3>
             {section.links &&

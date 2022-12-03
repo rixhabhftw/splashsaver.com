@@ -15,7 +15,7 @@ export const SECTIONS = [
       {
         id: 2,
         title: "Careers",
-        active: false,
+        active: true,
         link: "/careers",
         external: false,
       },
@@ -69,8 +69,8 @@ export const SECTIONS = [
       {
         id: 2,
         title: "Discord",
-        active: false,
-        link: "",
+        active: true,
+        link: "https://discord.gg/6SwY4Vp9KU",
         external: true,
       },
     ],
