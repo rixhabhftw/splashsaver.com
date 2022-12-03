@@ -3,6 +3,7 @@ import { useSession, signOut } from "next-auth/react";
 import { FiPlus, FiExternalLink } from "react-icons/fi";
 import { useEffect } from "react";
 import Image from "next/image";
+import cx from "classnames";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -50,7 +51,9 @@ export const Sidebar = () => {
           </DropdownMenu.Trigger>
           <DropdownMenu.Portal>
             <DropdownMenu.Content
-              className="border rounded p-2 w-48 bg-white transition"
+              className={cx(
+                "rdx-side-top:animate-slide-up rdx-side-bottom:animate-slide-down border rounded p-2 w-48 bg-white"
+              )}
               sideOffset={10}
               style={{ marginLeft: "10rem" }}
             >
