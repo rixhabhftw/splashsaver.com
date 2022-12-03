@@ -16,7 +16,7 @@ export const Footer = () => {
           </h2>
           <p className="sm:text-sm text-xs mt-1 text-gray-400 sm:max-w-[15rem] max-w-[12rem]">
             &copy; {new Date().getFullYear()}{" "}
-            <span className="font-bold text-gray-500">splashsaver.com</span>.
+            <span className="font-bold text-gray-500">Splashsaver.com</span>.
             All rights reserved. Need support?{" "}
             <Link
               className="duration-300 font-semibold hover:text-gray-500"

@@ -1,9 +1,9 @@
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useSession, signOut } from "next-auth/react";
-import { FiPlus, FiExternalLink } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
+import { DOCS_PAGE } from "@splashsaver/lib";
 import { useEffect } from "react";
 import Image from "next/image";
-import cx from "classnames";
+import { Dropdown } from "@splashsaver/ui";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -22,8 +22,84 @@ export const Sidebar = () => {
     return <Container>Loading...</Container>;
   }
 
-  const dropdownMenuItemStyles =
-    "flex items-center justify-between text-sm text-gray-400 outline-none font-light p-2 duration-300 hover:bg-gray-50 rounded cursor-pointer";
+  const DROPDOWN_MENU_SECTIONS = {
+    parts: [
+      {
+        label: undefined,
+        id: 1,
+        items: [
+          {
+            id: 1,
+            dangerousAction: false,
+            link: undefined,
+            type: "text",
+            click: undefined,
+            external: false,
+            text: "View profile",
+          },
+          {
+            id: 2,
+            dangerousAction: false,
+            link: undefined,
+            type: "text",
+            click: undefined,
+            external: false,
+            text: "Settings",
+          },
+        ],
+      },
+      {
+        label: "Developers",
+        id: 2,
+        items: [
+          {
+            id: 1,
+            dangerousAction: false,
+            link: "",
+            type: "link",
+            click: undefined,
+            external: true,
+            text: "Developers console",
+          },
+          {
+            id: 2,
+            dangerousAction: false,
+            link: DOCS_PAGE,
+            type: "link",
+            click: undefined,
+            external: true,
+            text: "Documentation",
+          },
+          {
+            id: 3,
+            dangerousAction: false,
+            link: undefined,
+            type: "text",
+            external: false,
+            text: "Report a bug",
+            click: () => {},
+          },
+        ],
+      },
+      {
+        label: undefined,
+        id: 3,
+        items: [
+          {
+            id: 1,
+            dangerousAction: true,
+            link: undefined,
+            type: "text",
+            external: false,
+            text: "Sign out",
+            click: () => {
+              signOut();
+            },
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <Container>
@@ -35,57 +111,24 @@ export const Sidebar = () => {
           <FiPlus className="mr-1 text-base" />
           Create team
         </p>
-        <DropdownMenu.Root>
-          <DropdownMenu.Trigger asChild>
-            <button className="flex items-center outline-none justify-center rounded-full">
-              <Image
-                className="border rounded-full"
-                src={session.user?.image!}
-                width={30}
-                height={30}
-                quality={99}
-                title="Profile picture"
-                alt="Profile Picture "
-              />
-            </button>
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Portal>
-            <DropdownMenu.Content
-              className={cx(
-                "rdx-side-top:animate-slide-up rdx-side-bottom:animate-slide-down border rounded p-2 w-48 bg-white"
-              )}
-              sideOffset={10}
-              style={{ marginLeft: "10rem" }}
-            >
-              <DropdownMenu.Item className={dropdownMenuItemStyles}>
-                View profile
-              </DropdownMenu.Item>
-              <DropdownMenu.Item className={dropdownMenuItemStyles}>
-                Settings
-              </DropdownMenu.Item>
-              <DropdownMenu.Separator className="border-[0.2px] text-gray-100 my-1 w-full" />
-              <DropdownMenu.Label className="text-[12px] pl-2 text-gray-300">
-                Developers
-              </DropdownMenu.Label>
-              <DropdownMenu.Item className={dropdownMenuItemStyles}>
-                Developer Console <FiExternalLink className="text-base" />
-              </DropdownMenu.Item>
-              <DropdownMenu.Item className={dropdownMenuItemStyles}>
-                Documentation <FiExternalLink className="text-base" />
-              </DropdownMenu.Item>
-              <DropdownMenu.Item className={dropdownMenuItemStyles}>
-                Report a bug
-              </DropdownMenu.Item>
-              <DropdownMenu.Separator className="border-[0.2px] text-gray-100 my-1 w-full" />
-              <DropdownMenu.Item
-                className={`${dropdownMenuItemStyles} text-red-500 font-normal`}
-                onClick={() => signOut()}
-              >
-                Sign out
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu.Portal>
-        </DropdownMenu.Root>
+
+        <Dropdown
+          sections={DROPDOWN_MENU_SECTIONS}
+          sideOffset={10}
+          style={{ marginLeft: "10rem" }}
+        >
+          <button className="flex items-center outline-none justify-center rounded-full">
+            <Image
+              className="border rounded-full"
+              src={session.user?.image!}
+              width={30}
+              height={30}
+              quality={99}
+              title="Profile picture"
+              alt="Profile Picture "
+            />
+          </button>
+        </Dropdown>
       </div>
     </Container>
   );

@@ -1,11 +1,57 @@
-import { WEB_PAGE } from "@splashsaver/lib";
+import { DOCS_PAGE, WEB_PAGE } from "@splashsaver/lib";
 import { FiMenu } from "react-icons/fi";
-import { Button } from "@splashsaver/ui";
+import { Button, Dropdown } from "@splashsaver/ui";
 import { NavLink } from "./NavLink";
 import { LINKS } from "./links";
 import Link from "next/link";
 
 export const Nav = () => {
+  const DROPDOWN_MENU_SECTIONS = {
+    parts: [
+      {
+        label: undefined,
+        id: 1,
+        items: [
+          {
+            id: 1,
+            text: "Pricing",
+            link: "#pricing",
+            external: false,
+            dangerousAction: false,
+            type: "text",
+            click: undefined,
+          },
+          {
+            id: 2,
+            text: "Blog",
+            link: "/blog",
+            external: false,
+            dangerousAction: false,
+            type: "text",
+            click: undefined,
+          },
+          {
+            id: 3,
+            text: "Team",
+            link: "/team",
+            external: false,
+            dangerousAction: false,
+            type: "text",
+            click: undefined,
+          },
+          {
+            id: 4,
+            text: "Docs",
+            link: DOCS_PAGE,
+            external: true,
+            dangerousAction: false,
+            type: "link",
+            click: undefined,
+          },
+        ],
+      },
+    ],
+  };
   return (
     <nav className="relative flex mx-auto items-center justify-between w-full h-20">
       <div className="flex items-center justify-center">
@@ -34,7 +80,17 @@ export const Nav = () => {
           <Button>Create Account</Button>
         </Link>
       </div>
-      <FiMenu className="lg:hidden flex text-slate-900 text-xl" />
+      <div className="lg:hidden flex">
+        <Dropdown
+          sections={DROPDOWN_MENU_SECTIONS}
+          sideOffset={10}
+          style={{ marginRight: "2rem" }}
+        >
+          <button>
+            <FiMenu className=" text-slate-900 text-xl" />
+          </button>
+        </Dropdown>
+      </div>
     </nav>
   );
 };

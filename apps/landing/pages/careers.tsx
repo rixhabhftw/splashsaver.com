@@ -10,7 +10,7 @@ const Careers: NextPage = () => {
     <Container>
       <Seo title="Splashsaver - Careers" description="" />
       <Header title="Careers" />
-      <div className="max-w-2xl">
+      <div className="sm:max-w-2xl max-w-full">
         <Text>
           At the moment we don&apos;t currently have any job openings as
           we&apos;re not funded yet but if you&apos;re interested in joining the{" "}

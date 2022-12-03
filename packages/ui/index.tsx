@@ -12,6 +12,7 @@ export * from "./form/Or";
 
 // UI
 export * from "./Tooltip";
+export * from "./Dropdown";
 export * from "./Heading";
 export * from "./Loading";
 export * from "./Button";
