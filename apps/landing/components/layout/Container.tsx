@@ -7,7 +7,7 @@ type Props = {
 
 export const Container = ({ children }: Props) => {
   return (
-    <div className="flex flex-col mx-auto max-w-6xl px-8 sm:px:3 pb-20">
+    <div className="flex flex-col mx-auto max-w-6xl overflow-hidden px-8 sm:px:3 pb-20">
       <Nav />
       {children}
       <Footer />

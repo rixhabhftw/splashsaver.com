@@ -5,7 +5,7 @@ export const Text = (
   >
 ) => {
   return (
-    <p className="text-gray-400" {...props}>
+    <p className="text-gray-400 sm:text-base text-sm" {...props}>
       {props.children}
     </p>
   );

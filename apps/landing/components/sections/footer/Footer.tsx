@@ -11,8 +11,10 @@ export const Footer = () => {
     <footer className="flex h-full justify-center flex-col mt-36">
       <div className="grid grid-cols-2 gap-6 min-h-64 sm:grid-cols-2 lg:grid-cols-6">
         <div className="col-span-2">
-          <h2 className="font-bold text-xl text-slate-900">splashsaver.com</h2>
-          <p className="text-sm mt-1 text-gray-400 max-w-[15rem]">
+          <h2 className="font-bold sm:text-xl text-lg text-slate-900">
+            splashsaver.com
+          </h2>
+          <p className="sm:text-sm text-xs mt-1 text-gray-400 sm:max-w-[15rem] max-w-[12rem]">
             &copy; {new Date().getFullYear()}{" "}
             <span className="font-bold text-gray-500">splashsaver.com</span>.
             All rights reserved. Need support?{" "}
@@ -23,26 +25,26 @@ export const Footer = () => {
               hi@notnick.io
             </Link>
           </p>
-          <div className="flex items-center mt-4">
+          <div className="flex items-center mt-4 sm:mb-0 mb-10">
             <Link
               className={`${iconClassNameStyles} outline-none focus:ring-4 ring-offset-2 ring-slate-300 rounded`}
               href="https://github.com/splashsaver/splashsaver.com"
               target="_blank"
             >
-              <FaGithub />
+              <FaGithub className="sm:text-2xl text-xl" />
             </Link>{" "}
             <Link
               className={`${iconClassNameStyles} outline-none focus:ring-4 ring-offset-2 ring-slate-300 rounded`}
               href="https://discord.gg/6SwY4Vp9KU"
               target="_blank"
             >
-              <FaDiscord className="text-2xl" />
+              <FaDiscord className="sm:text-2xl text-xl" />
             </Link>
           </div>
         </div>
         {SECTIONS.map((section) => (
           <div key={section.id} className="flex flex-col col-span-1 space-y-2">
-            <h3 className="font-bold text-gray-500 uppercase tracking-tight text-sm">
+            <h3 className="font-bold text-gray-500 uppercase tracking-tight sm:text-sm text-xs">
               {section.title}
             </h3>
             {section.links &&
@@ -53,7 +55,7 @@ export const Footer = () => {
                     link.active
                       ? "text-gray-400 hover:text-slate-900 focus:ring-4 ring-offset-2 ring-slate-300 rounded"
                       : "text-gray-300 pointer-events-none select-none"
-                  } text-sm duration-300 outline-none flex items-center`}
+                  } sm:text-sm text-xs duration-300 outline-none flex items-center`}
                   href={link.link}
                   target={link.external ? "_blank" : "_self"}
                 >

@@ -10,6 +10,7 @@ export const Seo = ({ description, title }: Props) => {
     <Head>
       <title>{title}</title>
       <meta name="theme-color" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content={description} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />

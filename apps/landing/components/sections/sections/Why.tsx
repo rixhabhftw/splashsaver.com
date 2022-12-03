@@ -43,17 +43,19 @@ export const Why = () => {
           problem by centralizing all these aspects into a single platform.
         </Text>
       </div>
-      <div className="grid gap-8 sm:grid-cols-3 w-full mt-16 items-center justify-between">
+      <div className="grid gap-8 sm:grid-cols-3  mt-16 items-center justify-between">
         {REASONS.map((reason) => (
           <div
-            className="flex items-center justify-center flex-col"
+            className="flex items-center justify-center flex-col w-full"
             key={reason.id}
           >
             {reason.icon}
-            <h1 className="font-bold tracking-tight text-slate-900 text-xl mb-2">
+            <h1 className="font-bold tracking-tight text-slate-900 sm:text-xl text-lg mb-2">
               {reason.title}
             </h1>
-            <Text style={{ textAlign: "center" }}>{reason.description}</Text>
+            <div className="sm:max-w-full max-w-[18rem] w-full">
+              <Text style={{ textAlign: "center" }}>{reason.description}</Text>
+            </div>
           </div>
         ))}
       </div>

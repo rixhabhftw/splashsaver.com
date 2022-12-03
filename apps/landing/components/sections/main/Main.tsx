@@ -21,7 +21,11 @@ export const Main = () => {
         </Link>
       </div>
       <picture>
-        <img className="w-[25rem]" src="/assets/Saly-22.png" alt="Saly" />
+        <img
+          className="w-[25rem] hidden lg:flex"
+          src="/assets/Saly-22.png"
+          alt="Saly"
+        />
       </picture>
     </main>
   );

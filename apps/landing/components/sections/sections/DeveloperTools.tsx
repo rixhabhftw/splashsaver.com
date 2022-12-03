@@ -26,7 +26,7 @@ export const DeveloperTooling = () => {
             to get started!
           </Text>
         </div>
-        <div className="w-1/2">
+        <div className="md:w-1/2 w-full">
           <TooltipWrapped
             title="This product is still in development, check back later."
             position={"top"}
@@ -40,7 +40,11 @@ export const DeveloperTooling = () => {
         </div>
       </div>
       <picture>
-        <img className="w-[30rem]" src="/assets/Saly-10.png" alt="Saly" />
+        <img
+          className="w-[30rem] hidden lg:flex"
+          src="/assets/Saly-10.png"
+          alt="Saly"
+        />
       </picture>
     </section>
   );
