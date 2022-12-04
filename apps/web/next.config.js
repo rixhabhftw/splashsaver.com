@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    transpilePackages: ["@acme/ui", "lodash-es"],
+    transpilePackages: [
+      "@splashsaver/ui",
+      "@splashsaver/lib",
+      "@splashsaver/prisma",
+    ],
   },
   images: {
     domains: ["lh3.googleusercontent.com", "avatars.githubusercontent.com"],

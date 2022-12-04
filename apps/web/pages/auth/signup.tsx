@@ -104,14 +104,22 @@ const Signup: NextPage = () => {
             <GitHubOAuthButton
               type="button"
               style={{ width: "100%" }}
-              onClick={() => signIn("github", { callbackUrl: CALLBACK_URL })}
+              onClick={() =>
+                signIn("github", {
+                  callbackUrl: `${CALLBACK_URL}?provider=github`,
+                })
+              }
             />
           </div>
           <div className="w-full">
             <GoogleOAuthButton
               type="button"
               style={{ width: "100%" }}
-              onClick={() => signIn("google", { callbackUrl: CALLBACK_URL })}
+              onClick={() =>
+                signIn("google", {
+                  callbackUrl: `${CALLBACK_URL}?provider=google`,
+                })
+              }
             />
           </div>
           <p className="text-[12px] ml-auto text-red-500 mt-2">

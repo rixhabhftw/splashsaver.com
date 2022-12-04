@@ -18,6 +18,7 @@ model User {
   twoFactorEnabled Boolean          @default(false)
   identityProvider IdentityProvider
   createdAt        DateTime         @default(now())
+  timeZone         String?
   updatedAt        DateTime         @updatedAt
   location         String?          @default("London, UK")
   username         String?          @unique

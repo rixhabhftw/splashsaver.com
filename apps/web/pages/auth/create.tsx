@@ -11,12 +11,14 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { FiAtSign } from "react-icons/fi";
 import { useRouter } from "next/router";
+import { NextPage } from "next";
 import Image from "next/image";
 
-const Create = () => {
+const Create: NextPage = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
   const [name, setName] = useState("");
 
   const { data: session } = useSession();
@@ -28,12 +30,28 @@ const Create = () => {
 
     setError("");
 
-    if (username.trim().length <= 3) {
-      setError("Username must be at least 3 characters.");
-      return;
+    const USERNAME_MIN_LENGTH = 2;
+
+    if (username.trim().length <= USERNAME_MIN_LENGTH) {
+      return setError(
+        `Username must have at least ${USERNAME_MIN_LENGTH + 1} characters.`
+      );
     }
 
-    router.push("/");
+    // Create the user.
+    await fetch("/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        provider: router.query.provider,
+        avatar: session?.user?.image,
+        code: code.trim(),
+        username,
+        email,
+      }),
+    });
   };
 
   useEffect(() => {
@@ -116,6 +134,22 @@ const Create = () => {
                 required={true}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={true}
+                style={{ width: "100%" }}
+              />
+            </div>
+
+            <div className="mb-2">
+              <div className="mb-1">
+                <Label title="Beta code" />
+              </div>
+              <Input
+                id="code"
+                name="code"
+                type="text"
+                value={code}
+                placeholder="Code"
+                required={true}
+                onChange={(e) => setCode(e.target.value)}
                 style={{ width: "100%" }}
               />
             </div>
