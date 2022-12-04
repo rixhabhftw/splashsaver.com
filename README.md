@@ -66,7 +66,6 @@ yarn dev
 
 ### Apps:
 
-- `docs`: Our official developers documentation.
 - `landing`: The landing page written in [Next.js](https://nextjs.org/).
 - `web`: The main web page.
 
@@ -77,4 +76,5 @@ yarn dev
 - `eslint-config-custom`: ESLint configurations used throughout the monorepo.
 - `lib`: Our library package containing helper functions and constants.
 - `tsconfig`: TypeScript configurations used throughout the monorepo.
+- `prisma`: Our prisma configuration.
 - `ui`: Shared component library.
