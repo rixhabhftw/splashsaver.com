@@ -73,6 +73,8 @@ const Create: NextPage = () => {
       setLoading(false);
       setError(data.error.message);
     }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -126,7 +128,7 @@ const Create: NextPage = () => {
               <div className="mb-1">
                 <Label title="Username" />
               </div>
-              <div className="flex items-center border border-gray-300 rounded focus:border-1 focus:border-slate-900 duration-300">
+              <div className="flex items-center border border-gray-300 rounded focus:ring-1 focus:ring-slate-900 duration-300">
                 <div className="ml-4">
                   <FiAtSign className="text-xl text-gray-500 cursor-pointer" />
                 </div>
@@ -138,7 +140,7 @@ const Create: NextPage = () => {
                   placeholder="nick"
                   required={true}
                   onChange={(e) => setUsername(e.target.value)}
-                  style={{ width: "100%", border: "none" }}
+                  style={{ width: "100%", border: "none", paddingLeft: "7px" }}
                 />
               </div>
             </div>

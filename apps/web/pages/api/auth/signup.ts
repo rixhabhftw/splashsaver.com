@@ -174,28 +174,17 @@ export default async function handler(
           expiresIn: "2 weeks",
         });
 
-        if (user) {
-          res.setHeader(
-            "Set-Cookie",
-            cookie.serialize(COOKIE_NAME, token, {
-              httpOnly: true,
-              secure: process.env.NODE_ENV !== "development",
-              sameSite: "lax",
-              path: "/",
-            })
-          );
-        } else {
-          console.log(`User object: ${user}`);
+        res.setHeader(
+          "Set-Cookie",
+          cookie.serialize(COOKIE_NAME, token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV !== "development",
+            sameSite: "lax",
+            path: "/",
+          })
+        );
 
-          return res.status(500).send({
-            success: false,
-            error: {
-              message: "Something went wrong whiles creating the user.",
-            },
-          });
-        }
-
-        return res.status(201).send({ success: true });
+        return res.redirect("/");
       }
     } catch (err) {
       console.log(err);

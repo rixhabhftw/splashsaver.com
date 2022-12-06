@@ -1,9 +1,10 @@
+import { ReportBugModal } from "./modals/ReportBugModal";
 import { useSession, signOut } from "next-auth/react";
-import { FiPlus } from "react-icons/fi";
 import { DOCS_PAGE } from "@splashsaver/lib";
-import { useEffect } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Dropdown } from "@splashsaver/ui";
+import { FiPlus } from "react-icons/fi";
+import Image from "next/image";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -14,6 +15,8 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const { data: session } = useSession();
 
   useEffect(() => {}, [session]);
@@ -77,7 +80,9 @@ export const Sidebar = () => {
             type: "text",
             external: false,
             text: "Report a bug",
-            click: () => {},
+            click: () => {
+              setIsOpen(true);
+            },
           },
         ],
       },
@@ -103,6 +108,7 @@ export const Sidebar = () => {
 
   return (
     <Container>
+      <ReportBugModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="flex items-center justify-between border-b border-gray-200 pb-4">
         <p
           className="text-gray-400 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded p-2 px-4
