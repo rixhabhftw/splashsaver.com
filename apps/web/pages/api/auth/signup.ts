@@ -51,19 +51,6 @@ export default async function handler(
       });
     }
 
-    if (
-      !body.provider.trim().toUpperCase().includes("SAML") ||
-      !body.provider.trim().toUpperCase().includes("GOOGLE") ||
-      !body.provider.trim().toUpperCase().includes("GITHUB")
-    ) {
-      return res.status(400).json({
-        success: false,
-        error: {
-          message: "Please provide a valid provider.",
-        },
-      });
-    }
-
     if (!validator.isEmail(body.email.trim())) {
       return res.status(400).json({
         success: false,
@@ -75,7 +62,8 @@ export default async function handler(
 
     if (
       filter.isProfane(body.username.trim()) ||
-      filter.isProfane(body.avatar.trim())
+      filter.isProfane(body.avatar.trim()) ||
+      filter.isProfane(body.name.trim())
     ) {
       return res.status(400).json({
         success: false,
@@ -90,15 +78,15 @@ export default async function handler(
     }
 
     try {
-      const response = await fetch(`${CODES_PAGE}/api/code`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          code: body.code.trim(),
-        }),
-      });
+      const response = await fetch(
+        `${CODES_PAGE}/api/code?code=${body.code.trim()}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const data: BetaCodeApiResponse = await response.json();
 
@@ -106,7 +94,7 @@ export default async function handler(
         return res.status(400).json({
           success: false,
           error: {
-            message: "Invalid code.",
+            message: "Invalid beta code.",
           },
         });
       }
@@ -151,7 +139,15 @@ export default async function handler(
     try {
       const existingUser = await prisma.user.findFirst({
         where: {
-          email: body.email.trim().toLowerCase(),
+          OR: [
+            { email: body.email.trim().toLowerCase() },
+            {
+              AND: [
+                { username: body.username.trim() },
+                { email: { not: undefined } },
+              ],
+            },
+          ],
         },
       });
 
@@ -201,7 +197,9 @@ export default async function handler(
 
         return res.status(201).send({ success: true });
       }
-    } catch (e) {
+    } catch (err) {
+      console.log(err);
+
       return res.status(500).send({
         success: false,
         error: {

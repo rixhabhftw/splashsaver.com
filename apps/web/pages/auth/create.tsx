@@ -1,6 +1,7 @@
 import {
   AuthenticationRequired,
   Heading,
+  Loading,
   Button,
   Label,
   Input,
@@ -15,6 +16,7 @@ import { NextPage } from "next";
 import Image from "next/image";
 
 const Create: NextPage = () => {
+  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
@@ -38,8 +40,12 @@ const Create: NextPage = () => {
       );
     }
 
+    console.log(router.query.provider);
+
     // Create the user.
-    await fetch("/api/auth/signup", {
+    setLoading(true);
+
+    const response = await fetch("/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,11 +53,26 @@ const Create: NextPage = () => {
       body: JSON.stringify({
         provider: router.query.provider,
         avatar: session?.user?.image,
+        name: name.trim(),
         code: code.trim(),
         username,
         email,
       }),
     });
+
+    interface Response {
+      success: boolean;
+      error: {
+        message: string;
+      };
+    }
+
+    const data: Response = await response.json();
+
+    if (!data.success) {
+      setLoading(false);
+      setError(data.error.message);
+    }
   };
 
   useEffect(() => {
@@ -137,7 +158,6 @@ const Create: NextPage = () => {
                 style={{ width: "100%" }}
               />
             </div>
-
             <div className="mb-2">
               <div className="mb-1">
                 <Label title="Beta code" />
@@ -160,6 +180,9 @@ const Create: NextPage = () => {
           <p className="text-[12px] ml-auto text-red-500 mt-2">
             {error ? error : null}
           </p>
+          <div className="ml-auto">
+            <Loading loading={loading} />
+          </div>
         </Form>
       </div>
     </div>
