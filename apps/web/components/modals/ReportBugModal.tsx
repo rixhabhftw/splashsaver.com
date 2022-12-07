@@ -7,6 +7,7 @@ import {
   Loading,
   Error,
   Success,
+  CharacterLimit,
 } from "@splashsaver/ui";
 import { useState } from "react";
 import Filter from "bad-words";
@@ -18,12 +19,14 @@ type Props = {
 
 export const ReportBugModal = ({ isOpen, setIsOpen }: Props) => {
   const [description, setDescription] = useState("");
-  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
 
   const filter = new Filter();
+
+  const CHARACTER_LIMIT = 500;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,10 +35,8 @@ export const ReportBugModal = ({ isOpen, setIsOpen }: Props) => {
       return setError("Please don't include profane words.");
     }
 
-    const CHARACTER_LIMIT = 500;
-
     if (description.trim().length > 500) {
-      return setError(`The character limit is ${CHARACTER_LIMIT}`);
+      return setError(`The character limit is ${CHARACTER_LIMIT}.`);
     }
 
     setLoading(true);
@@ -114,10 +115,11 @@ export const ReportBugModal = ({ isOpen, setIsOpen }: Props) => {
         <Button type="submit" style={{ width: "100%" }}>
           Submit
         </Button>
-        <div className="mt-1 text-right ">
-          <Loading loading={loading} />
+        <div className="mt-2 flex items-center justify-between">
+          {loading ? <Loading loading={loading} /> : null}
           {error ? <Error message={error} /> : null}
           {success ? <Success message={success} /> : null}
+          <CharacterLimit text={description} limit={CHARACTER_LIMIT} />
         </div>
       </form>
     </Dialog>

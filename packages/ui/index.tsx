@@ -11,6 +11,7 @@ export * from "./form/Form";
 export * from "./form/Or";
 
 // UI
+export * from "./CharacterLimit";
 export * from "./Textarea";
 export * from "./Dropdown";
 export * from "./Heading";

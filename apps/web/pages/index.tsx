@@ -1,9 +1,9 @@
 import { AuthenticationRequired, Heading, Seo, Text } from "@splashsaver/ui";
 import { Sidebar } from "../components/Sidebar";
 import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
 import { NextPage } from "next";
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
 
 const Web: NextPage = () => {
   const { data: session } = useSession();

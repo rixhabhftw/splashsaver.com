@@ -17,3 +17,4 @@ export const CODES_PAGE =
 
 export const CALLBACK_URL = `${WEB_PAGE}/auth/create`;
 export const COOKIE_NAME = "splash-cookie-tkn";
+export const TOKEN_NAME = "splash-token";

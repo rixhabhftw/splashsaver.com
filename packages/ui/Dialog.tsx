@@ -46,7 +46,7 @@ export const Dialog = ({
         >
           <DialogPrimitive.Content
             className="rounded fixed top-1/2 left-1/2 flex max-h-[40rem] -translate-x-1/2 -translate-y-1/2 transform flex-col justify-center
-          bg-white z-50 sm:w-[35rem] w-[90%] p-8 border"
+          bg-white z-50 sm:w-[35rem] w-[90%] p-8 border outline-none"
           >
             <DialogPrimitive.Title className="font-bold text-slate-900 text-2xl tracking-tight mb-1">
               {title}

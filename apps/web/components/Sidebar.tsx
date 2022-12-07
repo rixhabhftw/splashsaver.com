@@ -1,9 +1,13 @@
-import { ReportBugModal } from "./modals/ReportBugModal";
+import {
+  CreateWorkspaceModal,
+  ViewProfileModal,
+  ReportBugModal,
+} from "./modals";
+import { FiPlus, FiMoreHorizontal } from "react-icons/fi";
 import { useSession, signOut } from "next-auth/react";
 import { DOCS_PAGE } from "@splashsaver/lib";
 import { useEffect, useState } from "react";
 import { Dropdown } from "@splashsaver/ui";
-import { FiPlus } from "react-icons/fi";
 import Image from "next/image";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
@@ -15,7 +19,19 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const Sidebar = () => {
+  const [createTeamModalIsOpen, setCreateTeamModalIsOpen] = useState(false);
+  const [viewProfileModalIsOpen, setViewProfileIsOpen] = useState(false);
+  const [workspaceList, setWorkspaceList] = useState<string[]>([]);
+  const [selectedWorkspace, setSelectedWorkspace] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
+  interface Workspace {
+    name: string;
+  }
+
+  const addWorkspace = (workspace: string) => {
+    setWorkspaceList((prev) => [...prev, workspace]);
+  };
 
   const { data: session } = useSession();
 
@@ -24,6 +40,71 @@ export const Sidebar = () => {
   if (!session) {
     return <Container>Loading...</Container>;
   }
+
+  const WORKSPACE_DROPDOWN_MENU_SECTION = {
+    parts: [
+      {
+        label: undefined,
+        id: 1,
+        items: [
+          {
+            id: 1,
+            dangerousAction: false,
+            link: undefined,
+            type: "text",
+            click: undefined,
+            external: false,
+            text: "Settings",
+          },
+        ],
+      },
+      {
+        label: "Manage",
+        id: 2,
+        items: [
+          {
+            id: 1,
+            dangerousAction: false,
+            link: undefined,
+            type: "text",
+            click: undefined,
+            external: false,
+            text: "Members",
+          },
+          {
+            id: 2,
+            dangerousAction: false,
+            link: undefined,
+            type: "text",
+            click: undefined,
+            external: false,
+            text: "Teams",
+          },
+        ],
+      },
+      {
+        label: "Workspaces",
+        id: 3,
+        items: workspaceList.map((workspace) => {
+          return {
+            id: 2,
+            dangerousAction: false,
+            link: undefined,
+            type: "text",
+            click: undefined,
+            external: false,
+            text: workspace
+              .trim()
+              .split("", 19)
+              .reduce(
+                (o, c) => (o.length === 18 ? `${o}${c}...` : `${o}${c}`),
+                ""
+              ),
+          };
+        }),
+      },
+    ],
+  };
 
   const DROPDOWN_MENU_SECTIONS = {
     parts: [
@@ -36,7 +117,9 @@ export const Sidebar = () => {
             dangerousAction: false,
             link: undefined,
             type: "text",
-            click: undefined,
+            click: () => {
+              setViewProfileIsOpen(true);
+            },
             external: false,
             text: "View profile",
           },
@@ -109,14 +192,24 @@ export const Sidebar = () => {
   return (
     <Container>
       <ReportBugModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <CreateWorkspaceModal
+        isOpen={createTeamModalIsOpen}
+        addWorkspace={addWorkspace}
+        setIsOpen={setCreateTeamModalIsOpen}
+      />
+      <ViewProfileModal
+        isOpen={viewProfileModalIsOpen}
+        setIsOpen={setViewProfileIsOpen}
+      />
       <div className="flex items-center justify-between border-b border-gray-200 pb-4">
-        <p
+        <div
           className="text-gray-400 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded p-2 px-4
           duration-300 hover:bg-gray-200 hover:text-gray-500 border"
+          onClick={() => setCreateTeamModalIsOpen(true)}
         >
           <FiPlus className="mr-1 text-base" />
-          Create team
-        </p>
+          Create workspace
+        </div>
 
         <Dropdown
           sections={DROPDOWN_MENU_SECTIONS}
@@ -136,6 +229,27 @@ export const Sidebar = () => {
           </button>
         </Dropdown>
       </div>
+      {workspaceList.length ? (
+        <div className="flex items-center justify-between border-b border-gray-200 pb-4">
+          <div className="flex items-center w-full bg-gray-100 rounded justify-between p-2 px-4 mt-4">
+            <div className="flex items-center justify-center">
+              <div className="bg-slate-900 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs mr-2">
+                {workspaceList[0][0]}
+              </div>
+              <p className="text-gray-400 text-sm">{workspaceList[0]}</p>
+            </div>{" "}
+            <Dropdown
+              sections={WORKSPACE_DROPDOWN_MENU_SECTION}
+              sideOffset={10}
+              style={{ marginLeft: "10rem" }}
+            >
+              <button className="outline-none">
+                <FiMoreHorizontal className="text-gray-400 duration-300 hover:text-gray-500 cursor-pointer" />
+              </button>
+            </Dropdown>
+          </div>
+        </div>
+      ) : null}
     </Container>
   );
 };

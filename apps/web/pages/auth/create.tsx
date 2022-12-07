@@ -7,7 +7,9 @@ import {
   Input,
   Form,
   Seo,
+  Error,
 } from "@splashsaver/ui";
+import { BetaCodeModal } from "../../components/modals/";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { FiAtSign } from "react-icons/fi";
@@ -16,7 +18,7 @@ import { NextPage } from "next";
 import Image from "next/image";
 
 const Create: NextPage = () => {
-  const [loading, setLoading] = useState(false);
+  const [betaCodeModalIsOpen, setBetaCodeModalIsOpen] = useState(false);
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
@@ -40,41 +42,15 @@ const Create: NextPage = () => {
       );
     }
 
-    console.log(router.query.provider);
+    setBetaCodeModalIsOpen(true);
+  };
 
-    // Create the user.
-    setLoading(true);
-
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        provider: router.query.provider,
-        avatar: session?.user?.image,
-        name: name.trim(),
-        code: code.trim(),
-        username,
-        email,
-      }),
-    });
-
-    interface Response {
-      success: boolean;
-      error: {
-        message: string;
-      };
-    }
-
-    const data: Response = await response.json();
-
-    if (!data.success) {
-      setLoading(false);
-      setError(data.error.message);
-    }
-
-    setLoading(false);
+  const data = {
+    provider: router.query.provider,
+    avatar: session?.user?.image,
+    name: name.trim(),
+    username,
+    email,
   };
 
   useEffect(() => {
@@ -88,6 +64,11 @@ const Create: NextPage = () => {
 
   return (
     <div className="flex min-h-screen">
+      <BetaCodeModal
+        isOpen={betaCodeModalIsOpen}
+        setIsOpen={setBetaCodeModalIsOpen}
+        data={data}
+      />
       <Seo title="Splashsaver / Create" description="" />
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
@@ -160,30 +141,12 @@ const Create: NextPage = () => {
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="mb-2">
-              <div className="mb-1">
-                <Label title="Beta code" />
-              </div>
-              <Input
-                id="code"
-                name="code"
-                type="text"
-                value={code}
-                placeholder="Code"
-                required={true}
-                onChange={(e) => setCode(e.target.value)}
-                style={{ width: "100%" }}
-              />
-            </div>
           </div>
           <Button type="submit" style={{ width: "100%" }}>
             Create Account
           </Button>
-          <p className="text-[12px] ml-auto text-red-500 mt-2">
-            {error ? error : null}
-          </p>
-          <div className="ml-auto">
-            <Loading loading={loading} />
+          <div className="mt-2 ml-auto">
+            {error ? <Error message={error} /> : null}
           </div>
         </Form>
       </div>

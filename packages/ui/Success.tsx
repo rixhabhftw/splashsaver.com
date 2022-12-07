@@ -1,7 +1,13 @@
+import { FiCheck } from "react-icons/fi";
+
 type Props = {
   message: string;
 };
 
 export const Success = ({ message }: Props) => {
-  return <p className="text-[12px] text-green-500">{message}</p>;
+  return (
+    <div className="flex items-center text-[12px] bg-green-300 w-fit px-4 text-white p-2 rounded">
+      <FiCheck className="text-base mr-2" /> {message}
+    </div>
+  );
 };

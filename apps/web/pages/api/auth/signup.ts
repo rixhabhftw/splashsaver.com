@@ -155,7 +155,7 @@ export default async function handler(
         return res.status(400).json({
           success: false,
           error: {
-            message: "This email is already registered.",
+            message: "An account with this email or username already exists.",
           },
         });
       } else {
@@ -169,22 +169,6 @@ export default async function handler(
             identityProvider,
           },
         });
-
-        const token = jwt.sign(user, process.env.JWT_SECRET!, {
-          expiresIn: "2 weeks",
-        });
-
-        res.setHeader(
-          "Set-Cookie",
-          cookie.serialize(COOKIE_NAME, token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV !== "development",
-            sameSite: "lax",
-            path: "/",
-          })
-        );
-
-        return res.redirect("/");
       }
     } catch (err) {
       console.log(err);
