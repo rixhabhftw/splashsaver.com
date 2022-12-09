@@ -4,31 +4,25 @@ import {
   ReportBugModal,
 } from "./modals";
 import { FiPlus, FiMoreHorizontal } from "react-icons/fi";
-import { TbLayoutSidebarLeftCollapse, TbLayoutSidebarLeftExpand } from "react-icons/tb";
+import {
+  TbLayoutSidebarLeftCollapse,
+  TbLayoutSidebarLeftExpand,
+} from "react-icons/tb";
 import { useSession, signOut } from "next-auth/react";
 import { DOCS_PAGE } from "@splashsaver/lib";
 import { useEffect, useState } from "react";
 import { Dropdown } from "@splashsaver/ui";
 import Image from "next/image";
 
-const ClosedContainer = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="flex flex-col w-17 border-r p-6 border-gray-200 h-full">
-        <div
-          className="text-gray-500 flex text-lg items-center justify-center cursor-pointer bg-gray-100 rounded p-2 px-2
-          duration-300 hover:bg-gray-200 hover:text-gray-500 border"
-          onClick={() => (true)}
-        >
-          <TbLayoutSidebarLeftExpand  />
-        </div>
-      </div>
-  );
-};
-
 const Container = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState(true);
+
   return (
-    <div className={`${open ? "w-72" : "w-20"} duration-300 flex flex-col w-72 border-r p-6 border-gray-200 h-full`}>
+    <div
+      className={`${
+        open ? "w-72" : "w-20"
+      } duration-300 flex flex-col w-72 border-r p-6 border-gray-200 h-full`}
+    >
       {children}
     </div>
   );
@@ -206,9 +200,13 @@ export const Sidebar = () => {
       },
     ],
   };
-
+  console.log(isOpen);
   return (
-    <div className={`${open ? "w-72 p-6" : "w-20 p-3"} duration-300 flex flex-col border-r border-gray-200 h-full`}>
+    <div
+      className={`${
+        open ? "w-72 p-6" : "w-20 p-3"
+      } duration-300 items-center flex flex-col border-r border-gray-200 h-full`}
+    >
       <ReportBugModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <CreateWorkspaceModal
         isOpen={createTeamModalIsOpen}
@@ -219,49 +217,66 @@ export const Sidebar = () => {
         isOpen={viewProfileModalIsOpen}
         setIsOpen={setViewProfileIsOpen}
       />
-      <div className="flex items-center justify-between border-b border-gray-200 pb-4">
+
+      <div
+        className={`flex ${
+          open ? "justify-between" : "justify-center"
+        } border-b border-gray-200 pb-4 w-full p-2 items-center`}
+      >
         <div
-          className={`text-gray-400 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded p-2 px-3
-          duration-300 hover:bg-gray-200 hover:text-gray-500 border ${!open && "scale-0"}`}
+          className={`text-gray-400 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded h-9  px-2
+          duration-300 hover:bg-gray-200 hover:text-gray-500 border ${
+            !open && "scale-0 hidden"
+          }`}
           onClick={() => setCreateTeamModalIsOpen(true)}
         >
           <FiPlus className="mr-1 text-base" />
-          Create workspace
+          Add workspace
         </div>
 
-        <Dropdown
-          sections={DROPDOWN_MENU_SECTIONS}
-          sideOffset={10}
-          style={{ marginLeft: "10rem" }}
-        >
-          <button className="flex items-center outline-none justify-center rounded-full">
-            <Image
-              className="border rounded-full"
-              src={session.user?.image!}
-              width={30}
-              height={30}
-              quality={99}
-              title="Profile picture"
-              alt="Profile Picture "
-            />
-          </button>
-        </Dropdown>
+        <div className={`${!open && "hidden"}`}>
+          <Dropdown
+            sections={DROPDOWN_MENU_SECTIONS}
+            sideOffset={10}
+            style={{ marginLeft: "10rem" }}
+          >
+            <button className="flex items-center outline-none justify-center rounded-full">
+              <Image
+                className="border rounded-full"
+                src={session.user?.image!}
+                width={30}
+                height={30}
+                quality={99}
+                title="Profile picture"
+                alt="Profile Picture "
+              />
+            </button>
+          </Dropdown>
+        </div>
+
         <div
-          className={`text-gray-500 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded p-2 px-2
-          duration-300 hover:bg-gray-200 hover:text-gray-500 border ${!open && "rotate-180 inset-y-0 left-0"}`}
+          className={`text-gray-500 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded h-9 w-9 
+          duration-300 hover:bg-gray-200 hover:text-gray-500 border ${
+            !open && "rotate-180 "
+          }`}
           onClick={() => setOpen(!open)}
         >
-          <TbLayoutSidebarLeftCollapse  />
+          <TbLayoutSidebarLeftCollapse />
         </div>
       </div>
+
       {workspaceList.length ? (
         <div className="flex items-center justify-between border-b border-gray-200 pb-4">
           <div className="flex items-center w-full bg-gray-100 rounded justify-between p-2 px-4 mt-4">
             <div className="flex items-center justify-center">
-              <div className={`bg-slate-900 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs mr-2`}>
+              <div
+                className={`bg-slate-900 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs mr-2`}
+              >
                 {workspaceList[0][0]}
               </div>
-              <p className={`text-gray-400 text-sm ${!open && "scale-0"} `}>{workspaceList[0]}</p>
+              <p className={`text-gray-400 text-sm ${!open && "scale-0"} `}>
+                {workspaceList[0]}
+              </p>
             </div>{" "}
             <Dropdown
               sections={WORKSPACE_DROPDOWN_MENU_SECTION}
@@ -269,12 +284,15 @@ export const Sidebar = () => {
               style={{ marginLeft: "10rem" }}
             >
               <button className="outline-none">
-                <FiMoreHorizontal className={`text-gray-400 duration-300 hover:text-gray-500 cursor-pointer ${!open && "scale-0"}`} />
+                <FiMoreHorizontal
+                  className={`text-gray-400 duration-300 hover:text-gray-500 cursor-pointer ${
+                    !open && "scale-0"
+                  }`}
+                />
               </button>
             </Dropdown>
           </div>
         </div>
-        
       ) : null}
     </div>
   );
