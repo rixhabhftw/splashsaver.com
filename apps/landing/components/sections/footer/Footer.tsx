@@ -12,7 +12,7 @@ export const Footer = () => {
       <div className="grid grid-cols-2 gap-6 min-h-64 sm:grid-cols-2 lg:grid-cols-6">
         <div className="col-span-2">
           <h2 className="font-bold sm:text-xl text-lg text-slate-900">
-            splashsaver.com
+            Splashsaver
           </h2>
           <p className="sm:text-sm text-xs mt-1 text-gray-400 sm:max-w-[15rem] max-w-[12rem]">
             &copy; {new Date().getFullYear()}{" "}

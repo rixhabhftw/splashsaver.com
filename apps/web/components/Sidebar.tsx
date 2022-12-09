@@ -270,11 +270,11 @@ export const Sidebar = () => {
           <div className="flex items-center w-full bg-gray-100 rounded justify-between p-2 px-4 mt-4">
             <div className="flex items-center justify-center">
               <div
-                className={`bg-slate-900 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs mr-2`}
+                className={`bg-slate-900 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs`}
               >
                 {workspaceList[0][0]}
               </div>
-              <p className={`text-gray-400 text-sm ${!open && "scale-0"} `}>
+              <p className={`text-gray-400 text-sm ml-2 mr-2 ${!open && "scale-0"} `}>
                 {workspaceList[0]}
               </p>
             </div>{" "}
