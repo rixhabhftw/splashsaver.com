@@ -159,7 +159,7 @@ export default async function handler(
           },
         });
       } else {
-        const user = await prisma.user.create({
+        await prisma.user.create({
           data: {
             email: body.email.trim().toLowerCase(),
             name: body.name.trim(),
@@ -169,6 +169,8 @@ export default async function handler(
             identityProvider,
           },
         });
+
+        return res.status(201).send({ success: true });
       }
     } catch (err) {
       console.log(err);
