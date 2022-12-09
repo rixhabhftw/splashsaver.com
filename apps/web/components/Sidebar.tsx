@@ -226,7 +226,7 @@ export const Sidebar = () => {
         <div
           className={`text-gray-400 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded h-9  px-2
           duration-300 hover:bg-gray-200 hover:text-gray-500 border ${
-            !open && "scale-0 hidden"
+            !open && "hidden"
           }`}
           onClick={() => setCreateTeamModalIsOpen(true)}
         >
@@ -274,7 +274,7 @@ export const Sidebar = () => {
               >
                 {workspaceList[0][0]}
               </div>
-              <p className={`text-gray-400 text-sm ml-2 mr-2 ${!open && "scale-0 hidden"} `}>
+              <p className={`text-gray-400 text-sm ml-2 mr-2 ${!open && "hidden"} `}>
                 {workspaceList[0]}
               </p>
             </div>{" "}
@@ -286,7 +286,7 @@ export const Sidebar = () => {
               <button className="outline-none">
                 <FiMoreHorizontal
                   className={`text-gray-400 duration-300 hover:text-gray-500 cursor-pointer ${
-                    !open && "scale-0 hidden"
+                    !open && "hidden"
                   }`}
                 />
               </button>
