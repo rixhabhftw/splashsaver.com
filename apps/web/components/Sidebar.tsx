@@ -274,7 +274,7 @@ export const Sidebar = () => {
               >
                 {workspaceList[0][0]}
               </div>
-              <p className={`text-gray-400 text-sm ml-2 mr-2 ${!open && "scale-0"} `}>
+              <p className={`text-gray-400 text-sm ml-2 mr-2 ${!open && "scale-0 hidden"} `}>
                 {workspaceList[0]}
               </p>
             </div>{" "}
@@ -286,7 +286,7 @@ export const Sidebar = () => {
               <button className="outline-none">
                 <FiMoreHorizontal
                   className={`text-gray-400 duration-300 hover:text-gray-500 cursor-pointer ${
-                    !open && "scale-0"
+                    !open && "scale-0 hidden"
                   }`}
                 />
               </button>
