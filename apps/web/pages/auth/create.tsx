@@ -69,7 +69,7 @@ const Create: NextPage = () => {
         setIsOpen={setBetaCodeModalIsOpen}
         data={data}
       />
-      <Seo title="Splashsaver / Create" description="" />
+      <Seo title="Splashsaver - Create" description="" />
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
           <div className="flex items-center justify-between mb-4 w-full">

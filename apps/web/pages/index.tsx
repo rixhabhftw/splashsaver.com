@@ -16,7 +16,7 @@ const Web: NextPage = () => {
 
   return (
     <div className="flex h-screen">
-      <Seo title="Splashsaver / Home" description="" />
+      <Seo title="Splashsaver - Home" description="" />
       <Sidebar />
     </div>
   );

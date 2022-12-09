@@ -47,7 +47,7 @@ const Signup: NextPage = () => {
 
   return (
     <div className="flex min-h-screen">
-      <Seo title="Splashsaver / Sign up" description="" />
+      <Seo title="Splashsaver - Sign up" description="" />
       <div className="flex flex-col w-screen items-center justify-center">
         <Form onSubmit={handleSubmit}>
           <div className="mb-4 w-full">

@@ -6,7 +6,7 @@ import Link from "next/link";
 export const AuthenticationRequired = () => {
   return (
     <div className="flex flex-col h-screen items-center justify-center animation-fade">
-      <Seo title="Splashsaver / Authentication Required" description="" />
+      <Seo title="Splashsaver - Authentication Required" description="" />
       <picture className="mb-16">
         <img className="w-[15rem]" src="/assets/Saly-26.png" alt="Saly" />
       </picture>
