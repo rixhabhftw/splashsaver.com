@@ -4,15 +4,31 @@ import {
   ReportBugModal,
 } from "./modals";
 import { FiPlus, FiMoreHorizontal } from "react-icons/fi";
+import { TbLayoutSidebarLeftCollapse, TbLayoutSidebarLeftExpand } from "react-icons/tb";
 import { useSession, signOut } from "next-auth/react";
 import { DOCS_PAGE } from "@splashsaver/lib";
 import { useEffect, useState } from "react";
 import { Dropdown } from "@splashsaver/ui";
 import Image from "next/image";
 
-const Container = ({ children }: { children: React.ReactNode }) => {
+const ClosedContainer = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex flex-col w-72 border-r p-6 border-gray-200 h-full">
+    <div className="flex flex-col w-17 border-r p-6 border-gray-200 h-full">
+        <div
+          className="text-gray-500 flex text-lg items-center justify-center cursor-pointer bg-gray-100 rounded p-2 px-2
+          duration-300 hover:bg-gray-200 hover:text-gray-500 border"
+          onClick={() => (true)}
+        >
+          <TbLayoutSidebarLeftExpand  />
+        </div>
+      </div>
+  );
+};
+
+const Container = ({ children }: { children: React.ReactNode }) => {
+  const [open, setOpen] = useState(true);
+  return (
+    <div className={`${open ? "w-72" : "w-20"} duration-300 flex flex-col w-72 border-r p-6 border-gray-200 h-full`}>
       {children}
     </div>
   );
@@ -34,6 +50,8 @@ export const Sidebar = () => {
   };
 
   const { data: session } = useSession();
+
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {}, [session]);
 
@@ -190,7 +208,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <Container>
+    <div className={`${open ? "w-72 p-6" : "w-20 p-3"} duration-300 flex flex-col border-r border-gray-200 h-full`}>
       <ReportBugModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <CreateWorkspaceModal
         isOpen={createTeamModalIsOpen}
@@ -203,8 +221,8 @@ export const Sidebar = () => {
       />
       <div className="flex items-center justify-between border-b border-gray-200 pb-4">
         <div
-          className="text-gray-400 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded p-2 px-4
-          duration-300 hover:bg-gray-200 hover:text-gray-500 border"
+          className={`text-gray-400 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded p-2 px-3
+          duration-300 hover:bg-gray-200 hover:text-gray-500 border ${!open && "scale-0"}`}
           onClick={() => setCreateTeamModalIsOpen(true)}
         >
           <FiPlus className="mr-1 text-base" />
@@ -228,15 +246,22 @@ export const Sidebar = () => {
             />
           </button>
         </Dropdown>
+        <div
+          className={`text-gray-500 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded p-2 px-2
+          duration-300 hover:bg-gray-200 hover:text-gray-500 border ${!open && "rotate-180 inset-y-0 left-0"}`}
+          onClick={() => setOpen(!open)}
+        >
+          <TbLayoutSidebarLeftCollapse  />
+        </div>
       </div>
       {workspaceList.length ? (
         <div className="flex items-center justify-between border-b border-gray-200 pb-4">
           <div className="flex items-center w-full bg-gray-100 rounded justify-between p-2 px-4 mt-4">
             <div className="flex items-center justify-center">
-              <div className="bg-slate-900 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs mr-2">
+              <div className={`bg-slate-900 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs mr-2`}>
                 {workspaceList[0][0]}
               </div>
-              <p className="text-gray-400 text-sm">{workspaceList[0]}</p>
+              <p className={`text-gray-400 text-sm ${!open && "scale-0"} `}>{workspaceList[0]}</p>
             </div>{" "}
             <Dropdown
               sections={WORKSPACE_DROPDOWN_MENU_SECTION}
@@ -244,12 +269,13 @@ export const Sidebar = () => {
               style={{ marginLeft: "10rem" }}
             >
               <button className="outline-none">
-                <FiMoreHorizontal className="text-gray-400 duration-300 hover:text-gray-500 cursor-pointer" />
+                <FiMoreHorizontal className={`text-gray-400 duration-300 hover:text-gray-500 cursor-pointer ${!open && "scale-0"}`} />
               </button>
             </Dropdown>
           </div>
         </div>
+        
       ) : null}
-    </Container>
+    </div>
   );
 };
