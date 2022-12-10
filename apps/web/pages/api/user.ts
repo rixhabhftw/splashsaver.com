@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
-    // Do something
+    res.status(200).send("user");
   } else {
     return res.status(400).json({
       success: false,

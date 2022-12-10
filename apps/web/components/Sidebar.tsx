@@ -35,10 +35,6 @@ export const Sidebar = () => {
   const [selectedWorkspace, setSelectedWorkspace] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  interface Workspace {
-    name: string;
-  }
-
   const addWorkspace = (workspace: string) => {
     setWorkspaceList((prev) => [...prev, workspace]);
   };
@@ -261,12 +257,12 @@ export const Sidebar = () => {
           }`}
           onClick={() => setOpen(!open)}
         >
-          <TbLayoutSidebarLeftCollapse />
+          <TbLayoutSidebarLeftCollapse className="text-base" />
         </div>
       </div>
 
       {workspaceList.length ? (
-        <div className="flex items-center justify-between border-b border-gray-200 pb-4">
+        <div className="flex items-center justify-between border-b w-full border-gray-200 pb-4">
           <div className="flex items-center w-full bg-gray-100 rounded justify-between p-2 px-4 mt-4">
             <div className="flex items-center justify-center">
               <div
@@ -274,7 +270,11 @@ export const Sidebar = () => {
               >
                 {workspaceList[0][0]}
               </div>
-              <p className={`text-gray-400 text-sm ml-2 mr-2 ${!open && "hidden"} `}>
+              <p
+                className={`text-gray-400 text-sm ml-2 mr-2 ${
+                  !open && "hidden"
+                } `}
+              >
                 {workspaceList[0]}
               </p>
             </div>{" "}

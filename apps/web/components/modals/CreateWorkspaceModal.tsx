@@ -46,6 +46,7 @@ export const CreateWorkspaceModal = ({
     setError("");
 
     addWorkspace(workspace);
+    setWorkspace("");
     setIsOpen(false);
   };
 
