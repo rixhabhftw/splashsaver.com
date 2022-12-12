@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  runtime: "experimental-edge",
   experimental: {
+    allowMiddlewareResponseBody: true,
     transpilePackages: [
       "@splashsaver/ui",
       "@splashsaver/lib",

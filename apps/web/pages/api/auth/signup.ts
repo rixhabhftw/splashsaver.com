@@ -1,11 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { CODES_PAGE, COOKIE_NAME } from "@splashsaver/lib";
 import { IdentityProvider } from "@prisma/client";
+import { CODES_PAGE } from "@splashsaver/lib";
 import prisma from "@splashsaver/prisma";
 import validator from "validator";
-import Filter from "bad-words";
 import jwt from "jsonwebtoken";
-import cookie from "cookie";
+import Filter from "bad-words";
 
 const filter = new Filter();
 
@@ -159,7 +158,7 @@ export default async function handler(
           },
         });
       } else {
-        await prisma.user.create({
+        const user = await prisma.user.create({
           data: {
             email: body.email.trim().toLowerCase(),
             name: body.name.trim(),
@@ -170,7 +169,9 @@ export default async function handler(
           },
         });
 
-        return res.status(201).send({ success: true });
+        const token = jwt.sign(user, process.env.JWT_SECRET!);
+
+        return res.status(201).send({ success: true, token });
       }
     } catch (err) {
       console.log(err);
