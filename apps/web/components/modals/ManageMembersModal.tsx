@@ -59,7 +59,7 @@ import {
                 onChange={(e) => setUsername(e.target.value)}
                 style={{ width: "100%", border: "none", paddingLeft: "7px" }}
               />
-          <Button className="ml-2 mr-2" type="submit">Add</Button>
+          <Button className="ml-2 mr-2 text-slate-500" type="submit">Add</Button>
         </div>
           <div className="my-3 mt-5 m-auto flex items-center">
             <Image
@@ -77,7 +77,7 @@ import {
             <Button className="ml-2 text-red-500" type="submit">Remove</Button>
         </div>
         <div className="flex items-center justify-between pt-5">
-            <Button type="submit">Save</Button>
+            <Button type="submit">Save Changes</Button>
           </div>
           <div className="mt-2 ">
             <Loading loading={loading} />

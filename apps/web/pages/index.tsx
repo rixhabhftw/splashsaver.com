@@ -1,5 +1,6 @@
 import { AuthenticationRequired, Heading, Seo, Text } from "@splashsaver/ui";
 import { Sidebar } from "../components/Sidebar";
+import { Dashboard } from "../components/Dashboard";
 import { useSession } from "next-auth/react";
 import { NextPage } from "next";
 
@@ -22,6 +23,7 @@ const Web: NextPage = () => {
     <div className="flex h-screen">
       <Seo title="Splashsaver - Dashboard" description="" />
       <Sidebar />
+      <Dashboard />
     </div>
   );
 };

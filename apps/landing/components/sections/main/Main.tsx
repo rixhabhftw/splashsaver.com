@@ -22,7 +22,7 @@ export const Main = () => {
             teams in a more efficient way.
           </Text>
         </div>
-        <Link href={`${WEB_PAGE}/auth/login`} target="_blank">
+        <Link href={`${WEB_PAGE}/auth/signup`} target="_blank">
           <Button style={{ width: "50%" }}>Get Started</Button>
         </Link>
       </div>
