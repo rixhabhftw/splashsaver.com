@@ -15,9 +15,9 @@ export const AuthenticationRequired = () => {
         Please{" "}
         <Link
           className="font-bold text-gray-500 hover:underline"
-          href="/auth/signup"
+          href="/auth/login"
         >
-          sign up
+          login
         </Link>{" "}
         to continue.
       </Text>

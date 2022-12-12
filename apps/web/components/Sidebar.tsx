@@ -2,6 +2,7 @@ import {
   CreateWorkspaceModal,
   ViewProfileModal,
   ReportBugModal,
+  ManageMembersModal
 } from "./modals";
 import { FiPlus, FiMoreHorizontal } from "react-icons/fi";
 import {
@@ -31,6 +32,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 export const Sidebar = () => {
   const [createTeamModalIsOpen, setCreateTeamModalIsOpen] = useState(false);
   const [viewProfileModalIsOpen, setViewProfileIsOpen] = useState(false);
+  const [viewManageMembersModalIsOpen, setManageMembersModalIsOpen] = useState(false);
   const [workspaceList, setWorkspaceList] = useState<string[]>([]);
   const [selectedWorkspace, setSelectedWorkspace] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -75,7 +77,9 @@ export const Sidebar = () => {
             dangerousAction: false,
             link: undefined,
             type: "text",
-            click: undefined,
+            click: () => {
+              setManageMembersModalIsOpen(true);
+            },            
             external: false,
             text: "Members",
           },
@@ -212,6 +216,10 @@ export const Sidebar = () => {
       <ViewProfileModal
         isOpen={viewProfileModalIsOpen}
         setIsOpen={setViewProfileIsOpen}
+      />
+      <ManageMembersModal
+        isOpen={viewManageMembersModalIsOpen}
+        setIsOpen={setManageMembersModalIsOpen}
       />
 
       <div
