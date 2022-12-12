@@ -5,11 +5,12 @@ import {
     Success,
     Error,
     Text,
+    Input
   } from "@splashsaver/ui";
   import { useEffect, useState } from "react";
   import Image from "next/image";
   import { useSession } from "next-auth/react";
-
+  import { FiAtSign } from "react-icons/fi";
   
   type Props = {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,6 +21,7 @@ import {
     isOpen,
     setIsOpen,
   }: Props) => {
+    const [username, setUsername] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
@@ -43,7 +45,23 @@ import {
           <Text>
             Add, remove, or edit members of your workspace.
           </Text>
-          <div className="my-3 m-auto flex items-center">
+          <div className="my-3 flex items-center border border-gray-300 rounded">
+          <div className="ml-4">
+          <FiAtSign className="text-xl text-gray-500 cursor-pointer" />
+          </div>
+          <Input
+                id="username"
+                name="username"
+                type="text"
+                value={username}
+                placeholder="keaton"
+                required={true}
+                onChange={(e) => setUsername(e.target.value)}
+                style={{ width: "100%", border: "none", paddingLeft: "7px" }}
+              />
+          <Button className="ml-2 mr-2" type="submit">Add</Button>
+        </div>
+          <div className="my-3 mt-5 m-auto flex items-center">
             <Image
             className="border rounded-full"
             src={session.user?.image!}
@@ -58,7 +76,7 @@ import {
             </Text>
             <Button className="ml-2 text-red-500" type="submit">Remove</Button>
         </div>
-          <div className="flex items-center justify-between pt-5">
+        <div className="flex items-center justify-between pt-5">
             <Button type="submit">Save</Button>
           </div>
           <div className="mt-2 ">
