@@ -23,7 +23,7 @@ const Team: NextPage = () => {
         {TEAM_MEMBERS.map((teamMember) => (
           <div key={teamMember.id} className="flex flex-col">
             <Image
-              className="border border-gray-100 rounded-md"
+              className="border border-gray-100 rounded-full"
               src={teamMember.avatar}
               draggable={false}
               width={110}
@@ -56,7 +56,8 @@ const Team: NextPage = () => {
         ))}
       </div>
       <div className="flex flex-col my-6">
-        <SecondaryHeading href="#contributors">Contributors</SecondaryHeading>
+      <Header title="Contributors" />
+        <Text>A list of our amazing contributors.</Text>
       </div>
     </Container>
   );
