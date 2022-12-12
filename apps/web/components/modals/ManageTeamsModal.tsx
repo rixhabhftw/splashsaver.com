@@ -13,7 +13,7 @@ import {
     isOpen: boolean;
   };
   
-  export const ManageMembersModal = ({
+  export const ManageTeamsModal = ({
     isOpen,
     setIsOpen,
   }: Props) => {
@@ -31,10 +31,10 @@ import {
     };
   
     return (
-      <Dialog isOpen={isOpen} setIsOpen={setIsOpen} title="Manage Members">
+      <Dialog isOpen={isOpen} setIsOpen={setIsOpen} title="Manage Teams">
         <form onSubmit={handleSubmit}>
           <Text>
-            Add, remove, or edit members of your workspace.
+            Add, remove, or edit teams of your workspace.
           </Text>
           <div className="flex items-center justify-between pt-5">
             <Button type="submit">Save</Button>
