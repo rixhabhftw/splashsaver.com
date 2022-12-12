@@ -6,6 +6,8 @@ import { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 const Web: NextPage = () => {
+  const [workspaceList, setWorkspaceList] = useState<string[]>([]);
+
   const { data: session } = useSession();
 
   useEffect(() => {}, [session]);
@@ -13,6 +15,8 @@ const Web: NextPage = () => {
   if (!session) {
     return <AuthenticationRequired />;
   }
+
+  // Test
 
   return (
     <div className="flex h-screen">

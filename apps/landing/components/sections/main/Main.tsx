@@ -9,7 +9,13 @@ export const Main = () => {
   return (
     <main className="flex items-center justify-between pt-52">
       <div className="max-w-lg">
-        <Heading>Making managing your startup team easy.</Heading>
+        <Heading>
+          Making managing your startup team{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+            easy
+          </span>
+          .
+        </Heading>
         <div className="my-6">
           <Text>
             Splashsaver is a platform to help startups and founders manage their
