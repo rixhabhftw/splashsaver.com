@@ -2,12 +2,11 @@ import {
   CreateWorkspaceModal,
   ViewProfileModal,
   ReportBugModal,
+  ManageMembersModal,
+  ManageTeamsModal
 } from "./modals";
 import { FiPlus, FiMoreHorizontal } from "react-icons/fi";
-import {
-  TbLayoutSidebarLeftCollapse,
-  TbLayoutSidebarLeftExpand,
-} from "react-icons/tb";
+import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 import { useSession, signOut } from "next-auth/react";
 import { DOCS_PAGE } from "@splashsaver/lib";
 import { useEffect, useState } from "react";
@@ -31,6 +30,8 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 export const Sidebar = () => {
   const [createTeamModalIsOpen, setCreateTeamModalIsOpen] = useState(false);
   const [viewProfileModalIsOpen, setViewProfileIsOpen] = useState(false);
+  const [viewManageMembersModalIsOpen, setManageMembersModalIsOpen] = useState(false);
+  const [viewManageTeamsModalIsOpen, setManageTeamsModalIsOpen] = useState(false);
   const [workspaceList, setWorkspaceList] = useState<string[]>([]);
   const [selectedWorkspace, setSelectedWorkspace] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -75,7 +76,9 @@ export const Sidebar = () => {
             dangerousAction: false,
             link: undefined,
             type: "text",
-            click: undefined,
+            click: () => {
+              setManageMembersModalIsOpen(true);
+            },            
             external: false,
             text: "Members",
           },
@@ -84,7 +87,9 @@ export const Sidebar = () => {
             dangerousAction: false,
             link: undefined,
             type: "text",
-            click: undefined,
+            click: () => {
+              setManageTeamsModalIsOpen(true);
+            },      
             external: false,
             text: "Teams",
           },
@@ -212,6 +217,14 @@ export const Sidebar = () => {
       <ViewProfileModal
         isOpen={viewProfileModalIsOpen}
         setIsOpen={setViewProfileIsOpen}
+      />
+      <ManageMembersModal
+        isOpen={viewManageMembersModalIsOpen}
+        setIsOpen={setManageMembersModalIsOpen}
+      />
+      <ManageTeamsModal
+        isOpen={viewManageTeamsModalIsOpen}
+        setIsOpen={setManageTeamsModalIsOpen}
       />
 
       <div
