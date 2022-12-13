@@ -38,10 +38,7 @@ import {
   
       setIsOpen(false);
     };
-    
-    if (!session) {
-      return <Text>Loading...</Text>;
-    }
+  
     return (
       <Dialog isOpen={isOpen} setIsOpen={setIsOpen} title="Manage Members">
         <form onSubmit={handleSubmit}>
