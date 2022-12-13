@@ -57,7 +57,7 @@ export const Nav = () => {
       <div className="flex items-center justify-center">
         <Link className="outline-none pr-5" href="/">
           <h1 className="sm:text-xl text-lg font-bold text-slate-900">
-            splashsaver.com
+            Splashsaver
           </h1>
         </Link>
       </div>

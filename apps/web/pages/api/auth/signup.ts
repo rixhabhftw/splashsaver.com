@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { CODES_PAGE, COOKIE_NAME } from "@splashsaver/lib";
 import { IdentityProvider } from "@prisma/client";
+import { CODES_PAGE } from "@splashsaver/lib";
 import prisma from "@splashsaver/prisma";
 import validator from "validator";
-import Filter from "bad-words";
 import jwt from "jsonwebtoken";
-import cookie from "cookie";
+import Filter from "bad-words";
+import * as jose from "jose";
 
 const filter = new Filter();
 
@@ -137,7 +137,7 @@ export default async function handler(
     }
 
     try {
-      const existingUser = await prisma.user.findFirst({
+      const existingUser = await prisma?.user.findFirst({
         where: {
           OR: [
             { email: body.email.trim().toLowerCase() },
@@ -159,7 +159,7 @@ export default async function handler(
           },
         });
       } else {
-        await prisma.user.create({
+        const user = await prisma?.user.create({
           data: {
             email: body.email.trim().toLowerCase(),
             name: body.name.trim(),
@@ -170,7 +170,24 @@ export default async function handler(
           },
         });
 
-        return res.status(201).send({ success: true });
+        if (user) {
+          const token = await new jose.SignJWT({ user })
+            .setProtectedHeader({ alg: "HS256" })
+            .setIssuedAt()
+            .setExpirationTime("30d")
+            .sign(new TextEncoder().encode(process.env.JWT_SECRET!));
+
+          return res.status(201).json({ success: true, token });
+        } else {
+          console.log("User object: ", user);
+
+          return res.status(500).json({
+            success: false,
+            error: {
+              message: "Something went wrong creating the user.",
+            },
+          });
+        }
       }
     } catch (err) {
       console.log(err);

@@ -12,4 +12,17 @@ export const TEAM_MEMBERS = [
       },
     ],
   },
+  {
+    id: 2,
+    name: "Keaton M.",
+    avatar: "/team/keaton.png",
+    role: "Developer",
+    socials: [
+      {
+        linkedin: "https://www.linkedin.com/in/keaton-m-0b0b1b1b1/",
+        twitter: "https://twitter.com/keat6n",
+        github: "https://github.com/iKeaton",
+      },
+    ],
+  },
 ];

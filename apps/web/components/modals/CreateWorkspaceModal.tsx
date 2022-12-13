@@ -46,6 +46,7 @@ export const CreateWorkspaceModal = ({
     setError("");
 
     addWorkspace(workspace);
+    setWorkspace("");
     setIsOpen(false);
   };
 
@@ -53,8 +54,7 @@ export const CreateWorkspaceModal = ({
     <Dialog isOpen={isOpen} setIsOpen={setIsOpen} title="Create workspace">
       <form onSubmit={handleSubmit}>
         <Text>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad saepe
-          delectus assumenda mollitia!
+          Get started now by creating a workspace. Workspaces are where you can organize your projects and teams.
         </Text>
         <div className="my-3">
           <Input

@@ -69,6 +69,7 @@ export const BetaCodeModal = ({ isOpen, setIsOpen, data }: Props) => {
       return;
     } else {
       localStorage.setItem("token", resData.token);
+
       setSuccess("Success!");
       setLoading(false);
       router.push("/");

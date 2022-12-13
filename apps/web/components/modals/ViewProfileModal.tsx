@@ -1,5 +1,4 @@
 import { Dialog } from "@splashsaver/ui";
-import { User } from "../../types/user";
 
 type Props = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;

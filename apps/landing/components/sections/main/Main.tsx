@@ -9,14 +9,20 @@ export const Main = () => {
   return (
     <main className="flex items-center justify-between pt-52">
       <div className="max-w-lg">
-        <Heading>Making managing your startup team easy.</Heading>
+        <Heading>
+          Managing your startup team just got {" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+            easier
+          </span>
+          .
+        </Heading>
         <div className="my-6">
           <Text>
             Splashsaver is a platform to help startups and founders manage their
             teams in a more efficient way.
           </Text>
         </div>
-        <Link href={`${WEB_PAGE}/auth/login`} target="_blank">
+        <Link href={`${WEB_PAGE}/auth/signup`} target="_blank">
           <Button style={{ width: "50%" }}>Get Started</Button>
         </Link>
       </div>

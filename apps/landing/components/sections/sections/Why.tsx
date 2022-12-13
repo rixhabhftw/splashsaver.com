@@ -34,7 +34,7 @@ export const Why = () => {
       className="flex items-center justify-center flex-col mt-36"
       id="why"
     >
-      <SecondaryHeading href="#why">Why splashsaver.com?</SecondaryHeading>
+      <SecondaryHeading href="#why">Why Splashsaver?</SecondaryHeading>
       <div className="max-w-3xl text-center mt-4">
         <Text>
           Startups rely on multiple tools to manage their teams, tasks and
