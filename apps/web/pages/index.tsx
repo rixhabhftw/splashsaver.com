@@ -7,7 +7,7 @@ import { NextPage } from "next";
 import { useEffect, useState } from "react";
 
 const Web: NextPage = () => {
-  const [workspaceList, setWorkspaceList] = useState<string[]>([]);
+  const [workspaces, setWorkspaces] = useState<string[]>([]);
 
   const { data: session } = useSession();
 
@@ -17,13 +17,15 @@ const Web: NextPage = () => {
     return <AuthenticationRequired />;
   }
 
-  // Test
+  const addWorkspace = (workspace: string) => {
+    setWorkspaces((prev) => [...prev, workspace]);
+  };
 
   return (
     <div className="flex h-screen">
       <Seo title="Splashsaver - Dashboard" description="" />
-      <Sidebar />
-      <Dashboard />
+      <Sidebar workspaces={workspaces} addWorkspace={addWorkspace} />
+      <Dashboard workspaces={workspaces} />
     </div>
   );
 };

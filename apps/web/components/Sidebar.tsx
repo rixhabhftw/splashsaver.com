@@ -1,54 +1,39 @@
 import {
   CreateWorkspaceModal,
-  ViewProfileModal,
-  ReportBugModal,
   ManageMembersModal,
-  ManageTeamsModal
+  ViewProfileModal,
+  ManageTeamsModal,
+  ReportBugModal,
 } from "./modals";
-import { FiPlus, FiMoreHorizontal } from "react-icons/fi";
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
+import { FiPlus, FiMoreHorizontal } from "react-icons/fi";
 import { useSession, signOut } from "next-auth/react";
 import { DOCS_PAGE } from "@splashsaver/lib";
-import { useEffect, useState } from "react";
 import { Dropdown } from "@splashsaver/ui";
+import { useState } from "react";
 import Image from "next/image";
 
-const Container = ({ children }: { children: React.ReactNode }) => {
-  const [open, setOpen] = useState(true);
-
-  return (
-    <div
-      className={`${
-        open ? "w-72" : "w-20"
-      } duration-300 flex flex-col w-72 border-r p-6 border-gray-200 h-full`}
-    >
-      {children}
-    </div>
-  );
+type Props = {
+  addWorkspace(workspace: string): void;
+  workspaces: string[];
 };
 
-export const Sidebar = () => {
+export const Sidebar = ({ addWorkspace, workspaces }: Props) => {
+  // Modals state
+  const [viewManageMembersModalIsOpen, setManageMembersModalIsOpen] =
+    useState(false);
+  const [viewManageTeamsModalIsOpen, setManageTeamsModalIsOpen] =
+    useState(false);
   const [createTeamModalIsOpen, setCreateTeamModalIsOpen] = useState(false);
   const [viewProfileModalIsOpen, setViewProfileIsOpen] = useState(false);
-  const [viewManageMembersModalIsOpen, setManageMembersModalIsOpen] = useState(false);
-  const [viewManageTeamsModalIsOpen, setManageTeamsModalIsOpen] = useState(false);
-  const [workspaceList, setWorkspaceList] = useState<string[]>([]);
+
+  // Normal state
   const [selectedWorkspace, setSelectedWorkspace] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
-  const addWorkspace = (workspace: string) => {
-    setWorkspaceList((prev) => [...prev, workspace]);
-  };
 
   const { data: session } = useSession();
 
   const [open, setOpen] = useState(true);
-
-  useEffect(() => {}, [session]);
-
-  if (!session) {
-    return <Container>Loading...</Container>;
-  }
 
   const WORKSPACE_DROPDOWN_MENU_SECTION = {
     parts: [
@@ -78,7 +63,7 @@ export const Sidebar = () => {
             type: "text",
             click: () => {
               setManageMembersModalIsOpen(true);
-            },            
+            },
             external: false,
             text: "Members",
           },
@@ -89,7 +74,7 @@ export const Sidebar = () => {
             type: "text",
             click: () => {
               setManageTeamsModalIsOpen(true);
-            },      
+            },
             external: false,
             text: "Teams",
           },
@@ -98,7 +83,7 @@ export const Sidebar = () => {
       {
         label: "Workspaces",
         id: 3,
-        items: workspaceList.map((workspace) => {
+        items: workspaces.map((workspace) => {
           return {
             id: 2,
             dangerousAction: false,
@@ -118,7 +103,6 @@ export const Sidebar = () => {
       },
     ],
   };
-
   const DROPDOWN_MENU_SECTIONS = {
     parts: [
       {
@@ -201,7 +185,11 @@ export const Sidebar = () => {
       },
     ],
   };
-  console.log(isOpen);
+
+  if (!session) {
+    return null;
+  }
+
   return (
     <div
       className={`${
@@ -230,10 +218,10 @@ export const Sidebar = () => {
       <div
         className={`flex ${
           open ? "justify-between" : "justify-center"
-        } border-b border-gray-200 pb-4 w-full p-2 items-center`}
+        } border-b border-gray-200 pb-4 w-full  items-center`}
       >
         <div
-          className={`text-gray-400 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded h-9  px-2
+          className={`text-gray-400 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded h-9 px-3
           duration-300 hover:bg-gray-200 hover:text-gray-500 border ${
             !open && "hidden"
           }`}
@@ -264,31 +252,37 @@ export const Sidebar = () => {
         </div>
 
         <div
-          className={`text-gray-500 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded h-9 w-9 
+          className={`text-gray-500 flex text-sm items-center justify-center cursor-pointer bg-gray-100 rounded h-9 w-9
           duration-300 hover:bg-gray-200 hover:text-gray-500 border ${
             !open && "rotate-180 "
           }`}
           onClick={() => setOpen(!open)}
         >
-          <TbLayoutSidebarLeftCollapse className="text-base" />
+          <TbLayoutSidebarLeftCollapse className="text-lg" />
         </div>
       </div>
 
-      {workspaceList.length ? (
-        <div className="flex items-center justify-between border-b w-full border-gray-200 pb-4">
-          <div className="flex items-center w-full bg-gray-100 rounded justify-between p-2 px-4 mt-4">
+      {workspaces.length ? (
+        <div className="flex items-center justify-center border-b w-full border-gray-200 pb-4">
+          <div
+            className={`flex items-center border bg-gray-100 rounded mt-4 ${
+              open
+                ? " w-full justify-between h-9 px-4"
+                : "justify-center h-9 w-9"
+            }`}
+          >
             <div className="flex items-center justify-center">
               <div
                 className={`bg-slate-900 text-white h-6 w-6 rounded-full flex items-center justify-center text-xs`}
               >
-                {workspaceList[0][0]}
+                {workspaces[0][0]}
               </div>
               <p
                 className={`text-gray-400 text-sm ml-2 mr-2 ${
                   !open && "hidden"
                 } `}
               >
-                {workspaceList[0]}
+                {workspaces[0]}
               </p>
             </div>{" "}
             <Dropdown

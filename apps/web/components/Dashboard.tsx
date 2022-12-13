@@ -1,52 +1,35 @@
-  import { FiPlus, FiMoreHorizontal } from "react-icons/fi";
-  import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
-  import { useSession, signOut } from "next-auth/react";
-  import { DOCS_PAGE } from "@splashsaver/lib";
-  import { useEffect, useState } from "react";
-  import { Dropdown, Button, Text } from "@splashsaver/ui";
-  import Image from "next/image";
-  
-  
-  const Container = ({ children }: { children: React.ReactNode }) => {
-    const [open, setOpen] = useState(true);
-  
-    return (
-      <div
-        className={`${
-          open ? "w-72" : "w-20"
-        } duration-300 flex flex-col w-72 border-r p-6 border-gray-200 h-full`}
-      >
-        {children}
-      </div>
-    );
-  };
-  
-  export const Dashboard = () => {
-    const [workspaceList, setWorkspaceList] = useState<string[]>([]);
-    const [selectedWorkspace, setSelectedWorkspace] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
-  
-    const addWorkspace = (workspace: string) => {
-      setWorkspaceList((prev) => [...prev, workspace]);
-    };
-  
-    const { data: session } = useSession();
-  
-    const [open, setOpen] = useState(true);
-  
-    useEffect(() => {}, [session]);
-  
-    if (!session) {
-      return <Container>Loading...</Container>;
-    }
-  
-    return (
-        <div className="flex flex-col flex-1 h-screen items-center justify-center">
-            <div className="bg-slate-100 rounded-lg px-2 p-10 pl-10 pr-10 text-center">
-            <Text className="text-lg text-gray-400">Welcome!</Text>
-            <Text className="text-lg text-gray-400">To get started, please add a workspace.</Text>
-            </div>
+import { Text } from "@splashsaver/ui";
+import Link from "next/link";
+
+type Props = {
+  workspaces: string[];
+};
+
+export const Dashboard = ({ workspaces }: Props) => {
+  return (
+    <div className="flex flex-col flex-1 h-screen p-12">
+      {workspaces.length === 0 ? (
+        <div className="bg-slate-100 max-w-3xl rounded-lg px-10 h-32 justify-center flex flex-col text-left">
+          <h1 className="text-xl text-black mb-1 font-bold">
+            Welcome there! 👋{" "}
+          </h1>
+          <Text>
+            Get started by{" "}
+            <span className="font-bold duration-300 hover:text-gray-500 cursor-pointer">
+              adding your workspace
+            </span>{" "}
+            on the left sidebar. If you have any issues then please contract the
+            support team (
+            <Link
+              className="font-bold duration-300 hover:text-gray-500"
+              href="mailto:support@splashsaver.com"
+            >
+              support@splashsaver.com
+            </Link>
+            ).
+          </Text>
         </div>
-    );
-  };
-  
+      ) : null}
+    </div>
+  );
+};

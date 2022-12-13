@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@splashsaver/prisma";
-import { User } from "./types/user";
-import jwt from "jsonwebtoken";
+import * as jose from "jose";
 
 export async function middleware(req: NextRequest) {
   const token = req.headers.get("authorization")?.split(" ")[1];
@@ -17,7 +16,11 @@ export async function middleware(req: NextRequest) {
     );
   }
 
-  const payload = jwt.verify(token, process.env.JWT_SECRET!) as User;
+  // const payload = jwt.verify(token, process.env.JWT_SECRET!) as User;
+  const payload = (await jose.jwtVerify(
+    token,
+    new TextEncoder().encode(process.env.JWT_SECRET!)
+  )) as any;
 
   if (!payload) {
     return new NextResponse(
@@ -30,10 +33,11 @@ export async function middleware(req: NextRequest) {
     );
   }
 
-  const username = payload.username as string;
+  console.log(payload);
+  const username = payload.username as any;
 
   try {
-    const user = await prisma.user.findUnique({
+    const user = await prisma?.user.findUnique({
       where: { username },
       select: {
         id: true,
@@ -78,7 +82,6 @@ export async function middleware(req: NextRequest) {
   NextResponse.next();
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: "/api/user",
 };

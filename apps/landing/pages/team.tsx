@@ -1,13 +1,12 @@
-import { Container } from "../components/layout/Container";
 import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import { Container } from "../components/layout/Container";
 import { Header } from "../components/layout/Header";
 import { TEAM_MEMBERS } from "../lib/team";
 import { Seo } from "../components/Seo";
+import { Text } from "@splashsaver/ui";
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Heading, Text } from "@splashsaver/ui";
-import { SecondaryHeading } from "../components/ui/SecondaryHeading";
 
 const Team: NextPage = () => {
   const iconClassNameStyles =
@@ -23,7 +22,7 @@ const Team: NextPage = () => {
         {TEAM_MEMBERS.map((teamMember) => (
           <div key={teamMember.id} className="flex flex-col">
             <Image
-              className="border border-gray-100 rounded-full"
+              className="border border-gray-100 rounded-md"
               src={teamMember.avatar}
               draggable={false}
               width={110}
@@ -56,8 +55,20 @@ const Team: NextPage = () => {
         ))}
       </div>
       <div className="flex flex-col my-6">
-      <Header title="Contributors" />
-        <Text>A list of our amazing contributors.</Text>
+        <Header title="Contributors" />
+        <a
+          className="my-6"
+          href="https://github.com/splashsaver/splashsaver.com/graphs/contributors"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <picture>
+            <img
+              src="https://contrib.rocks/image?repo=splashsaver/splashsaver.com&columns=8&max=40"
+              alt="Avatars of the top contributors the the Spacedrive repository. Follow link for names and data."
+            />
+          </picture>
+        </a>
       </div>
     </Container>
   );
