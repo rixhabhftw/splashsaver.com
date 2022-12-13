@@ -43,7 +43,7 @@
     return (
         <div className="flex flex-col flex-1 h-screen items-center justify-center">
             <div className="bg-slate-100 rounded-lg px-2 p-10 pl-10 pr-10 text-center">
-            <Text className="text-lg text-gray-400">Welcome, {session.user?.name}</Text>
+            <Text className="text-lg text-gray-400">Welcome!</Text>
             <Text className="text-lg text-gray-400">To get started, please add a workspace.</Text>
             </div>
         </div>
