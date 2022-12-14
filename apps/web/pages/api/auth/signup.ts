@@ -5,7 +5,6 @@ import prisma from "@splashsaver/prisma";
 import validator from "validator";
 import jwt from "jsonwebtoken";
 import Filter from "bad-words";
-import * as jose from "jose";
 
 const filter = new Filter();
 
@@ -137,7 +136,7 @@ export default async function handler(
     }
 
     try {
-      const existingUser = await prisma?.user.findFirst({
+      const existingUser = await prisma.user.findFirst({
         where: {
           OR: [
             { email: body.email.trim().toLowerCase() },
@@ -159,7 +158,7 @@ export default async function handler(
           },
         });
       } else {
-        const user = await prisma?.user.create({
+        const user = await prisma.user.create({
           data: {
             email: body.email.trim().toLowerCase(),
             name: body.name.trim(),
@@ -171,11 +170,7 @@ export default async function handler(
         });
 
         if (user) {
-          const token = await new jose.SignJWT({ user })
-            .setProtectedHeader({ alg: "HS256" })
-            .setIssuedAt()
-            .setExpirationTime("30d")
-            .sign(new TextEncoder().encode(process.env.JWT_SECRET!));
+          const token = jwt.sign(user, process.env.JWT_SECRET!);
 
           return res.status(201).json({ success: true, token });
         } else {
