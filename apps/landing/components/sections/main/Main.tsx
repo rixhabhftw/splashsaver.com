@@ -10,8 +10,8 @@ export const Main = () => {
     <main className="flex items-center justify-between pt-52">
       <div className="max-w-lg">
         <Heading>
-          Managing your startup team just got {" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+          Managing your startup team just got{" "}
+          <span className="text-transparent inline-block bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
             easier
           </span>
           .
