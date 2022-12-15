@@ -2,10 +2,11 @@ import { Text } from "@splashsaver/ui";
 import Link from "next/link";
 
 type Props = {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   workspaces: string[];
 };
 
-export const Dashboard = ({ workspaces }: Props) => {
+export const Dashboard = ({ workspaces, setIsOpen }: Props) => {
   return (
     <div className="flex flex-col flex-1 h-screen p-12">
       {workspaces.length === 0 ? (
@@ -15,7 +16,10 @@ export const Dashboard = ({ workspaces }: Props) => {
           </h1>
           <Text>
             Get started by{" "}
-            <span className="font-bold duration-300 hover:text-gray-500 cursor-pointer">
+            <span
+              className="font-bold duration-300 hover:text-gray-500 cursor-pointer"
+              onClick={() => setIsOpen(true)}
+            >
               adding your workspace
             </span>{" "}
             on the left sidebar. If you have any issues then please contract the

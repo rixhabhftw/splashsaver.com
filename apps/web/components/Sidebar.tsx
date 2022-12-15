@@ -7,24 +7,30 @@ import {
 } from "./modals";
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 import { FiPlus, FiMoreHorizontal } from "react-icons/fi";
+import { DOCS_PAGE, TOKEN_NAME } from "@splashsaver/lib";
 import { useSession, signOut } from "next-auth/react";
-import { DOCS_PAGE } from "@splashsaver/lib";
 import { Dropdown } from "@splashsaver/ui";
 import { useState } from "react";
 import Image from "next/image";
 
 type Props = {
+  setCreateWorkspaceModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   addWorkspace(workspace: string): void;
+  createWorkspaceModalIsOpen: boolean;
   workspaces: string[];
 };
 
-export const Sidebar = ({ addWorkspace, workspaces }: Props) => {
+export const Sidebar = ({
+  addWorkspace,
+  workspaces,
+  setCreateWorkspaceModalIsOpen,
+  createWorkspaceModalIsOpen,
+}: Props) => {
   // Modals state
   const [viewManageMembersModalIsOpen, setManageMembersModalIsOpen] =
     useState(false);
   const [viewManageTeamsModalIsOpen, setManageTeamsModalIsOpen] =
     useState(false);
-  const [createTeamModalIsOpen, setCreateTeamModalIsOpen] = useState(false);
   const [viewProfileModalIsOpen, setViewProfileIsOpen] = useState(false);
 
   // Normal state
@@ -178,6 +184,7 @@ export const Sidebar = ({ addWorkspace, workspaces }: Props) => {
             external: false,
             text: "Sign out",
             click: () => {
+              localStorage.removeItem(TOKEN_NAME);
               signOut();
             },
           },
@@ -198,9 +205,9 @@ export const Sidebar = ({ addWorkspace, workspaces }: Props) => {
     >
       <ReportBugModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <CreateWorkspaceModal
-        isOpen={createTeamModalIsOpen}
+        isOpen={createWorkspaceModalIsOpen}
         addWorkspace={addWorkspace}
-        setIsOpen={setCreateTeamModalIsOpen}
+        setIsOpen={setCreateWorkspaceModalIsOpen}
       />
       <ViewProfileModal
         isOpen={viewProfileModalIsOpen}
@@ -225,7 +232,7 @@ export const Sidebar = ({ addWorkspace, workspaces }: Props) => {
           duration-300 hover:bg-gray-200 hover:text-gray-500 border ${
             !open && "hidden"
           }`}
-          onClick={() => setCreateTeamModalIsOpen(true)}
+          onClick={() => setCreateWorkspaceModalIsOpen(true)}
         >
           <FiPlus className="mr-1 text-base" />
           Add workspace
@@ -261,7 +268,6 @@ export const Sidebar = ({ addWorkspace, workspaces }: Props) => {
           <TbLayoutSidebarLeftCollapse className="text-lg" />
         </div>
       </div>
-
       {workspaces.length ? (
         <div className="flex items-center justify-center border-b w-full border-gray-200 pb-4">
           <div
