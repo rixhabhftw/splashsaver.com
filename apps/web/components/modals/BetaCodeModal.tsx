@@ -7,6 +7,7 @@ import {
   Success,
   Error,
 } from "@splashsaver/ui";
+import { TOKEN_NAME } from "@splashsaver/lib";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -68,7 +69,7 @@ export const BetaCodeModal = ({ isOpen, setIsOpen, data }: Props) => {
       setError(resData.error.message);
       return;
     } else {
-      localStorage.setItem("token", resData.token);
+      localStorage.setItem(TOKEN_NAME, resData.token);
 
       setSuccess("Success!");
       setLoading(false);
